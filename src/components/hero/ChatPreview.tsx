@@ -28,7 +28,7 @@ const ChatPreview = () => {
   }, []);
 
   return (
-    <Card className="hover:scale-105 transition-all duration-300 border-primary/20 shadow-lg">
+    <Card className="hover:scale-105 transition-all duration-300 bg-gradient-glass backdrop-blur-sm border-white/10 shadow-lg">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
@@ -46,7 +46,7 @@ const ChatPreview = () => {
           {messages.slice(0, visibleMessages).map((message, index) => (
             <div 
               key={index}
-              className={`flex items-start space-x-2 animate-slide-up ${
+              className={`flex items-start space-x-2 animate-fade-in ${
                 message.type === 'agent' ? 'flex-row-reverse space-x-reverse' : ''
               }`}
             >

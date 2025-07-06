@@ -26,7 +26,7 @@ const LanguageSelector = () => {
   const currentLang = languages[currentIndex];
 
   return (
-    <Card className="hover:scale-105 transition-all duration-300 border-secondary/20 shadow-lg">
+    <Card className="hover:scale-105 transition-all duration-300 bg-gradient-glass backdrop-blur-sm border-white/10 shadow-lg">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="w-10 h-10 bg-gradient-secondary rounded-lg flex items-center justify-center">
