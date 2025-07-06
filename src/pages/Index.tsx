@@ -7,16 +7,16 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b bg-card/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Phone className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold">MultiCall Pro</span>
+            <span className="text-2xl font-bold text-primary">MultiCall Pro</span>
           </div>
           <div className="flex items-center space-x-4">
             <Button variant="ghost">Über uns</Button>
             <Button variant="ghost">Services</Button>
-            <Button variant="outline">
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Phone className="h-4 w-4 mr-2" />
               +49 (0) 800 123 4567
             </Button>
@@ -25,12 +25,13 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/5 to-secondary/10">
-        <div className="container mx-auto text-center max-w-4xl">
-          <Badge className="mb-6" variant="secondary">
+      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-accent/50 to-primary/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
+        <div className="container mx-auto text-center max-w-4xl relative z-10">
+          <Badge className="mb-6 bg-secondary text-secondary-foreground hover:bg-secondary/90" variant="secondary">
             24/7 Mehrsprachiger Service
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary-dark to-primary bg-clip-text text-transparent leading-tight">
             Ihr professionelles Call Center für internationale Kundenbetreuung
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -38,11 +39,11 @@ const Index = () => {
             Professionell, zuverlässig und in ihrer Muttersprache.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8">
+            <Button size="lg" className="text-lg px-8 bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-lg hover:shadow-xl transition-all duration-300">
               <Phone className="h-5 w-5 mr-2" />
               Kostenloses Beratungsgespräch
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8">
+            <Button variant="outline" size="lg" className="text-lg px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               Referenzen ansehen
             </Button>
           </div>
@@ -60,10 +61,10 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/30">
               <CardHeader>
                 <Headphones className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Inbound Call Center</CardTitle>
+                <CardTitle className="text-primary">Inbound Call Center</CardTitle>
                 <CardDescription>
                   Professionelle Annahme Ihrer eingehenden Anrufe in der Sprache Ihrer Kunden
                 </CardDescription>
@@ -77,10 +78,10 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/30">
               <CardHeader>
                 <Phone className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Outbound Services</CardTitle>
+                <CardTitle className="text-primary">Outbound Services</CardTitle>
                 <CardDescription>
                   Aktive Kundenansprache und Leadgenerierung in Ihrer Zielsprache
                 </CardDescription>
@@ -94,10 +95,10 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/30">
               <CardHeader>
                 <Mail className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Multichannel Support</CardTitle>
+                <CardTitle className="text-primary">Multichannel Support</CardTitle>
                 <CardDescription>
                   E-Mail, Chat und Social Media Betreuung in allen wichtigen Sprachen
                 </CardDescription>
@@ -115,10 +116,10 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-muted/30">
+      <section className="py-20 px-4 bg-gradient-to-r from-accent/30 to-primary/5">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Warum MultiCall Pro?</h2>
+            <h2 className="text-4xl font-bold mb-4 text-primary">Warum MultiCall Pro?</h2>
             <p className="text-xl text-muted-foreground">
               Ihre Vorteile im Überblick
             </p>
@@ -198,9 +199,9 @@ const Index = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="py-20 px-4 bg-muted/30">
+      <section className="py-20 px-4 bg-gradient-to-br from-primary/5 to-accent/20">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12">Über 500 zufriedene Kunden vertrauen uns</h2>
+          <h2 className="text-4xl font-bold mb-12 text-primary">Über 500 zufriedene Kunden vertrauen uns</h2>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
@@ -227,9 +228,10 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-primary/5">
-        <div className="container mx-auto text-center max-w-3xl">
-          <h2 className="text-4xl font-bold mb-6">
+      <section className="py-20 px-4 bg-gradient-to-r from-secondary/10 to-primary/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-primary/5"></div>
+        <div className="container mx-auto text-center max-w-3xl relative z-10">
+          <h2 className="text-4xl font-bold mb-6 text-primary">
             Bereit für internationalen Erfolg?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
@@ -237,11 +239,11 @@ const Index = () => {
             und erfahren Sie, wie wir Ihr Unternehmen international erfolgreich machen können.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8">
+            <Button size="lg" className="text-lg px-8 bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-lg hover:shadow-xl transition-all duration-300">
               <Phone className="h-5 w-5 mr-2" />
               +49 (0) 800 123 4567
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8">
+            <Button variant="outline" size="lg" className="text-lg px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Mail className="h-5 w-5 mr-2" />
               Kontakt aufnehmen
             </Button>
