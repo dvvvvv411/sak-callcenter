@@ -1,298 +1,310 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Phone, Mail, Clock, Users, Headphones, Check } from "lucide-react";
+import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight } from "lucide-react";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-card/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Phone className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold text-primary">MultiCall Pro</span>
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center animate-glow">
+              <Phone className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              MultiCall Pro
+            </span>
           </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost">Über uns</Button>
-            <Button variant="ghost">Services</Button>
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              <Phone className="h-4 w-4 mr-2" />
-              +49 (0) 800 123 4567
+          <div className="hidden md:flex items-center space-x-6">
+            <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+              Services
+            </Button>
+            <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+              Technologie
+            </Button>
+            <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+              Preise
+            </Button>
+            <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+              Beratung buchen
             </Button>
           </div>
         </div>
-      </header>
+      </nav>
 
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-accent/50 to-primary/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
-        <div className="container mx-auto text-center max-w-4xl relative z-10">
-          <Badge className="mb-6 bg-secondary text-secondary-foreground hover:bg-secondary/90" variant="secondary">
-            24/7 Mehrsprachiger Service
+      <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 via-transparent to-neon-green/5"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-electric-blue/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-neon-green/10 rounded-full blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
+        
+        <div className="container mx-auto text-center max-w-5xl relative z-10">
+          <Badge className="mb-8 bg-gradient-glass border border-white/20 text-primary backdrop-blur-sm" variant="outline">
+            🚀 KI-basierte Kundenbetreuung 2025
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary-dark to-primary bg-clip-text text-transparent leading-tight">
-            Ihr professionelles Call Center für internationale Kundenbetreuung
+          
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
+            <span className="bg-gradient-primary bg-clip-text text-transparent">
+              Ihr Business
+            </span>
+            <br />
+            <span className="text-primary">spricht jede Sprache</span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Wir sprechen über 25 Sprachen und betreuen Ihre Kunden rund um die Uhr. 
-            Professionell, zuverlässig und in ihrer Muttersprache.
+          
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+            Revolutionäre AI-gestützte Kundenbetreuung in 25+ Sprachen. 
+            Steigern Sie Ihren Umsatz um bis zu 300% mit unserem intelligenten Call Center.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-lg hover:shadow-xl transition-all duration-300">
-              <Phone className="h-5 w-5 mr-2" />
-              Kostenloses Beratungsgespräch
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <Button size="lg" className="text-lg px-12 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white border-0 animate-glow">
+              <Phone className="h-6 w-6 mr-3" />
+              Sofort loslegen - Kostenlos
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              Referenzen ansehen
+            <Button variant="outline" size="lg" className="text-lg px-12 py-6 border-primary/30 text-primary hover:bg-primary/5 backdrop-blur-sm">
+              Live Demo ansehen
+              <ChevronRight className="h-5 w-5 ml-2" />
             </Button>
           </div>
-        </div>
-      </section>
 
-      {/* Services Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Unsere Services</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Professionelle Kundenbetreuung in über 25 Sprachen
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/30">
-              <CardHeader>
-                <Headphones className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="text-primary">Inbound Call Center</CardTitle>
-                <CardDescription>
-                  Professionelle Annahme Ihrer eingehenden Anrufe in der Sprache Ihrer Kunden
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="text-sm space-y-2">
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />Kundenservice & Support</li>
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />Bestellannahme</li>
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />Technischer Support</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/30">
-              <CardHeader>
-                <Phone className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="text-primary">Outbound Services</CardTitle>
-                <CardDescription>
-                  Aktive Kundenansprache und Leadgenerierung in Ihrer Zielsprache
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="text-sm space-y-2">
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />Kaltakquise</li>
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />Marktforschung</li>
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />Kundenbefragungen</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/30">
-              <CardHeader>
-                <Mail className="h-10 w-10 text-primary mb-2" />
-                <CardTitle className="text-primary">Multichannel Support</CardTitle>
-                <CardDescription>
-                  E-Mail, Chat und Social Media Betreuung in allen wichtigen Sprachen
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="text-sm space-y-2">
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />E-Mail Support</li>
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />Live Chat</li>
-                  <li className="flex items-center"><Check className="h-4 w-4 text-primary mr-2" />Social Media</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-accent/30 to-primary/5">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-primary">Warum MultiCall Pro?</h2>
-            <p className="text-xl text-muted-foreground">
-              Ihre Vorteile im Überblick
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-primary/10 rounded-full p-6 w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-10 w-10 text-primary" />
-              </div>
-              <h3 className="font-semibold mb-2">24/7 Verfügbarkeit</h3>
-              <p className="text-sm text-muted-foreground">
-                Rund um die Uhr für Ihre Kunden da
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-primary/10 rounded-full p-6 w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-primary" />
-              </div>
-              <h3 className="font-semibold mb-2">25+ Sprachen</h3>
-              <p className="text-sm text-muted-foreground">
-                Muttersprachliche Kundenbetreuung
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-primary/10 rounded-full p-6 w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                <Check className="h-10 w-10 text-primary" />
-              </div>
-              <h3 className="font-semibold mb-2">ISO Zertifiziert</h3>
-              <p className="text-sm text-muted-foreground">
-                Höchste Qualitätsstandards
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-primary/10 rounded-full p-6 w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                <Headphones className="h-10 w-10 text-primary" />
-              </div>
-              <h3 className="font-semibold mb-2">Erfahrene Agents</h3>
-              <p className="text-sm text-muted-foreground">
-                Über 10 Jahre Branchenerfahrung
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Branchen & Expertise</h2>
-            <p className="text-xl text-muted-foreground">
-              Spezialisiert auf verschiedene Industriezweige
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "E-Commerce & Online-Handel",
-              "Finanzdienstleistungen",
-              "Gesundheitswesen",
-              "Technologie & Software",
-              "Reise & Tourismus", 
-              "Immobilien"
-            ].map((industry, index) => (
-              <Card key={index} className="hover:bg-muted/50 transition-colors">
-                <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold">{industry}</h3>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/5 to-accent/20">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12 text-primary">Über 500 zufriedene Kunden vertrauen uns</h2>
-          
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">500+</div>
-              <p className="text-muted-foreground">Zufriedene Kunden</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">25+</div>
-              <p className="text-muted-foreground">Sprachen</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">99.8%</div>
+          {/* Stats */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <div className="text-center animate-slide-up">
+              <div className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">99.9%</div>
               <p className="text-muted-foreground">Verfügbarkeit</p>
             </div>
+            <div className="text-center animate-slide-up" style={{animationDelay: '0.1s'}}>
+              <div className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">25+</div>
+              <p className="text-muted-foreground">Sprachen</p>
+            </div>
+            <div className="text-center animate-slide-up" style={{animationDelay: '0.2s'}}>
+              <div className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">2.5M+</div>
+              <p className="text-muted-foreground">Zufriedene Kunden</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Features */}
+      <section className="py-20 px-6 relative">
+        <div className="container mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold mb-6 text-primary">
+              Die Zukunft der Kundenbetreuung
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Erleben Sie KI-gestützte Services, die Ihre Kunden begeistern
+            </p>
           </div>
 
-          <div className="flex justify-center space-x-8 opacity-60">
-            {/* Trust badges/logos would go here */}
-            <Badge variant="outline">ISO 9001</Badge>
-            <Badge variant="outline">GDPR Konform</Badge>
-            <Badge variant="outline">TÜV Zertifiziert</Badge>
+          <div className="grid lg:grid-cols-3 gap-8">
+            <Card className="group hover:scale-105 transition-all duration-500 bg-gradient-glass backdrop-blur-sm border-white/10 hover:border-electric-blue/30 animate-slide-up">
+              <CardHeader className="text-center pb-8">
+                <div className="w-20 h-20 mx-auto mb-6 bg-gradient-primary rounded-2xl flex items-center justify-center group-hover:animate-glow">
+                  <Headphones className="h-10 w-10 text-white" />
+                </div>
+                <CardTitle className="text-2xl mb-4 text-primary">AI-Powered Calls</CardTitle>
+                <CardDescription className="text-base">
+                  Intelligente Gesprächsführung mit natürlicher Spracherkennung
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-4">
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    Emotionale Intelligenz
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    Echtzeit-Übersetzung
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    Sentiment Analysis
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:scale-105 transition-all duration-500 bg-gradient-glass backdrop-blur-sm border-white/10 hover:border-electric-blue/30 animate-slide-up" style={{animationDelay: '0.1s'}}>
+              <CardHeader className="text-center pb-8">
+                <div className="w-20 h-20 mx-auto mb-6 bg-gradient-secondary rounded-2xl flex items-center justify-center group-hover:animate-glow">
+                  <Clock className="h-10 w-10 text-white" />
+                </div>
+                <CardTitle className="text-2xl mb-4 text-primary">24/7 Automation</CardTitle>
+                <CardDescription className="text-base">
+                  Nie wieder verpasste Anrufe oder unzufriedene Kunden
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-4">
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    Automatische Weiterleitung
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    Smart Scheduling
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    Predictive Analytics
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:scale-105 transition-all duration-500 bg-gradient-glass backdrop-blur-sm border-white/10 hover:border-electric-blue/30 animate-slide-up" style={{animationDelay: '0.2s'}}>
+              <CardHeader className="text-center pb-8">
+                <div className="w-20 h-20 mx-auto mb-6 bg-gradient-primary rounded-2xl flex items-center justify-center group-hover:animate-glow">
+                  <Users className="h-10 w-10 text-white" />
+                </div>
+                <CardTitle className="text-2xl mb-4 text-primary">Global Reach</CardTitle>
+                <CardDescription className="text-base">
+                  Weltweite Expansion ohne geografische Grenzen
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-4">
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    25+ Sprachen nativ
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    Kulturelle Anpassung
+                  </li>
+                  <li className="flex items-center text-sm">
+                    <Check className="h-5 w-5 text-neon-green mr-3" />
+                    Lokale Präsenz
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* ROI Section */}
+      <section className="py-20 px-6 bg-gradient-to-r from-primary/5 to-secondary/5 relative overflow-hidden">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-5xl font-bold mb-8 text-primary">
+              Messbare Ergebnisse in 30 Tagen
+            </h2>
+            <p className="text-xl text-muted-foreground mb-12">
+              Unsere Kunden erleben durchschnittlich diese Verbesserungen:
+            </p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
+                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">+300%</div>
+                <p className="text-sm text-muted-foreground">Umsatzsteigerung</p>
+              </div>
+              <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
+                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">-70%</div>
+                <p className="text-sm text-muted-foreground">Operative Kosten</p>
+              </div>
+              <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
+                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">95%</div>
+                <p className="text-sm text-muted-foreground">Kundenzufriedenheit</p>
+              </div>
+              <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
+                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">0.3s</div>
+                <p className="text-sm text-muted-foreground">Antwortzeit</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-secondary/10 to-primary/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-primary/5"></div>
-        <div className="container mx-auto text-center max-w-3xl relative z-10">
-          <h2 className="text-4xl font-bold mb-6 text-primary">
-            Bereit für internationalen Erfolg?
+      <section className="py-20 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 via-transparent to-neon-green/10"></div>
+        <div className="container mx-auto text-center max-w-4xl relative z-10">
+          <h2 className="text-6xl font-bold mb-8 text-primary">
+            Bereit für die Zukunft?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Kontaktieren Sie uns noch heute für ein unverbindliches Beratungsgespräch 
-            und erfahren Sie, wie wir Ihr Unternehmen international erfolgreich machen können.
+          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Starten Sie noch heute und erleben Sie, wie KI-gestützte Kundenbetreuung 
+            Ihr Business revolutioniert.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-lg hover:shadow-xl transition-all duration-300">
-              <Phone className="h-5 w-5 mr-2" />
-              +49 (0) 800 123 4567
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+            <Button size="lg" className="text-lg px-12 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white border-0 animate-glow">
+              <Phone className="h-6 w-6 mr-3" />
+              Jetzt kostenlos starten
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              <Mail className="h-5 w-5 mr-2" />
-              Kontakt aufnehmen
+            <Button variant="outline" size="lg" className="text-lg px-12 py-6 border-primary/30 text-primary hover:bg-primary/5 backdrop-blur-sm">
+              <Mail className="h-6 w-6 mr-3" />
+              Beratungstermin buchen
             </Button>
+          </div>
+
+          <div className="flex justify-center items-center space-x-8 opacity-70">
+            <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm">
+              ISO 27001
+            </Badge>
+            <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm">
+              GDPR Konform
+            </Badge>
+            <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm">
+              SOC 2 Type II
+            </Badge>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-card border-t py-12 px-4">
+      <footer className="bg-primary/5 border-t border-white/10 py-16 px-6">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Phone className="h-6 w-6 text-primary" />
-                <span className="text-xl font-bold">MultiCall Pro</span>
+          <div className="grid md:grid-cols-4 gap-8 mb-12">
+            <div className="col-span-2">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center">
+                  <Phone className="h-5 w-5 text-white" />
+                </div>
+                <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                  MultiCall Pro
+                </span>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Ihr Partner für professionelle, mehrsprachige Kundenbetreuung.
+              <p className="text-muted-foreground mb-6 max-w-md">
+                Die Zukunft der mehrsprachigen Kundenbetreuung. 
+                KI-gestützt, global verfügbar, lokal relevant.
               </p>
+              <div className="flex space-x-4">
+                <Button size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+                  <Phone className="h-4 w-4 mr-2" />
+                  +49 (0) 800 123 4567
+                </Button>
+              </div>
             </div>
+            
             <div>
-              <h4 className="font-semibold mb-4">Services</h4>
+              <h4 className="font-semibold mb-4 text-primary">Services</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Inbound Call Center</li>
-                <li>Outbound Services</li>
-                <li>Multichannel Support</li>
-                <li>Übersetzungsservice</li>
+                <li>AI Call Center</li>
+                <li>Multilingual Support</li>
+                <li>24/7 Automation</li>
+                <li>Analytics Dashboard</li>
               </ul>
             </div>
+            
             <div>
-              <h4 className="font-semibold mb-4">Unternehmen</h4>
+              <h4 className="font-semibold mb-4 text-primary">Unternehmen</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>Über uns</li>
                 <li>Karriere</li>
-                <li>Referenzen</li>
-                <li>Qualität</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Kontakt</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>+49 (0) 800 123 4567</li>
-                <li>info@multicallpro.de</li>
-                <li>24/7 Support</li>
+                <li>Partner</li>
+                <li>Presse</li>
               </ul>
             </div>
           </div>
-          <div className="border-t pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 MultiCall Pro. Alle Rechte vorbehalten.</p>
+          
+          <div className="border-t border-white/10 pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; 2025 MultiCall Pro. Die Zukunft spricht alle Sprachen.</p>
           </div>
         </div>
       </footer>
