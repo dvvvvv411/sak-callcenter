@@ -1,11 +1,11 @@
 
-
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, ChevronRight } from "lucide-react";
 import LiveCounter from "./LiveCounter";
 import LanguageSelector from "./LanguageSelector";
 import ChatPreview from "./ChatPreview";
 import HeroStats from "./HeroStats";
+import StatsCard from "./StatsCard";
 
 const HeroSection = () => {
   return (
