@@ -42,7 +42,7 @@ const Index = () => {
         
         <div className="container mx-auto text-center max-w-5xl relative z-10">
           <Badge className="mb-8 bg-gradient-glass border border-white/20 text-primary backdrop-blur-sm" variant="outline">
-            🚀 KI-basierte Kundenbetreuung 2025
+            🏢 Bewährte Expertise seit 7 Jahren
           </Badge>
           
           <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
@@ -54,8 +54,8 @@ const Index = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Revolutionäre AI-gestützte Kundenbetreuung in 25+ Sprachen. 
-            Steigern Sie Ihren Umsatz um bis zu 300% mit unserem intelligenten Call Center.
+            Professionelle mehrsprachige Kundenbetreuung mit modernster Technologie. 
+            Seit 7 Jahren vertrauen Unternehmen auf unsere bewährten Call Center Lösungen.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
@@ -76,12 +76,12 @@ const Index = () => {
               <p className="text-muted-foreground">Verfügbarkeit</p>
             </div>
             <div className="text-center animate-slide-up" style={{animationDelay: '0.1s'}}>
-              <div className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">25+</div>
+              <div className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">12</div>
               <p className="text-muted-foreground">Sprachen</p>
             </div>
             <div className="text-center animate-slide-up" style={{animationDelay: '0.2s'}}>
-              <div className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">2.5M+</div>
-              <p className="text-muted-foreground">Zufriedene Kunden</p>
+              <div className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">7</div>
+              <p className="text-muted-foreground">Jahre Erfahrung</p>
             </div>
           </div>
         </div>
@@ -92,10 +92,10 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold mb-6 text-primary">
-              Die Zukunft der Kundenbetreuung
+              Bewährte Lösungen für Ihren Erfolg
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Erleben Sie KI-gestützte Services, die Ihre Kunden begeistern
+              Professionelle Services, die sich in der Praxis bewährt haben
             </p>
           </div>
 
@@ -105,24 +105,24 @@ const Index = () => {
                 <div className="w-20 h-20 mx-auto mb-6 bg-gradient-primary rounded-2xl flex items-center justify-center group-hover:animate-glow">
                   <Headphones className="h-10 w-10 text-white" />
                 </div>
-                <CardTitle className="text-2xl mb-4 text-primary">AI-Powered Calls</CardTitle>
+                <CardTitle className="text-2xl mb-4 text-primary">Professionelle Beratung</CardTitle>
                 <CardDescription className="text-base">
-                  Intelligente Gesprächsführung mit natürlicher Spracherkennung
+                  Geschulte Mitarbeiter mit technischer Unterstützung für optimale Ergebnisse
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-4">
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    Emotionale Intelligenz
+                    Geschulte Fachkräfte
                   </li>
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    Echtzeit-Übersetzung
+                    Mehrsprachige Betreuung
                   </li>
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    Sentiment Analysis
+                    Qualitätskontrolle
                   </li>
                 </ul>
               </CardContent>
@@ -133,24 +133,24 @@ const Index = () => {
                 <div className="w-20 h-20 mx-auto mb-6 bg-gradient-secondary rounded-2xl flex items-center justify-center group-hover:animate-glow">
                   <Clock className="h-10 w-10 text-white" />
                 </div>
-                <CardTitle className="text-2xl mb-4 text-primary">24/7 Automation</CardTitle>
+                <CardTitle className="text-2xl mb-4 text-primary">Erweiterte Erreichbarkeit</CardTitle>
                 <CardDescription className="text-base">
-                  Nie wieder verpasste Anrufe oder unzufriedene Kunden
+                  Flexible Servicezeiten und zuverlässige Anrufannahme
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-4">
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    Automatische Weiterleitung
+                    Professionelle Weiterleitung
                   </li>
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    Smart Scheduling
+                    Flexible Dienstzeiten
                   </li>
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    Predictive Analytics
+                    Detaillierte Berichte
                   </li>
                 </ul>
               </CardContent>
@@ -170,15 +170,15 @@ const Index = () => {
                 <ul className="space-y-4">
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    25+ Sprachen nativ
+                    12 Sprachen verfügbar
                   </li>
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    Kulturelle Anpassung
+                    Kulturelle Kompetenz
                   </li>
                   <li className="flex items-center text-sm">
                     <Check className="h-5 w-5 text-neon-green mr-3" />
-                    Lokale Präsenz
+                    Regionale Expertise
                   </li>
                 </ul>
               </CardContent>
@@ -192,27 +192,27 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-5xl font-bold mb-8 text-primary">
-              Messbare Ergebnisse in 30 Tagen
+              Bewährte Ergebnisse unserer Kunden
             </h2>
             <p className="text-xl text-muted-foreground mb-12">
-              Unsere Kunden erleben durchschnittlich diese Verbesserungen:
+              Durchschnittliche Verbesserungen nach 6 Monaten Zusammenarbeit:
             </p>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">+300%</div>
-                <p className="text-sm text-muted-foreground">Umsatzsteigerung</p>
+                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">+25%</div>
+                <p className="text-sm text-muted-foreground">Mehr Leads</p>
               </div>
               <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">-70%</div>
-                <p className="text-sm text-muted-foreground">Operative Kosten</p>
+                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">-30%</div>
+                <p className="text-sm text-muted-foreground">Weniger Kosten</p>
               </div>
               <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">95%</div>
+                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">92%</div>
                 <p className="text-sm text-muted-foreground">Kundenzufriedenheit</p>
               </div>
               <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">0.3s</div>
+                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">&lt; 5s</div>
                 <p className="text-sm text-muted-foreground">Antwortzeit</p>
               </div>
             </div>
@@ -228,8 +228,8 @@ const Index = () => {
             Bereit für die Zukunft?
           </h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Starten Sie noch heute und erleben Sie, wie KI-gestützte Kundenbetreuung 
-            Ihr Business revolutioniert.
+            Profitieren Sie von unserer 7-jährigen Erfahrung und erweitern Sie 
+            Ihre Reichweite mit professioneller mehrsprachiger Kundenbetreuung.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
@@ -271,8 +271,8 @@ const Index = () => {
                 </span>
               </div>
               <p className="text-muted-foreground mb-6 max-w-md">
-                Die Zukunft der mehrsprachigen Kundenbetreuung. 
-                KI-gestützt, global verfügbar, lokal relevant.
+                Professionelle mehrsprachige Kundenbetreuung. 
+                Bewährt seit 7 Jahren, global verfügbar, lokal kompetent.
               </p>
               <div className="flex space-x-4">
                 <Button size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
@@ -285,10 +285,10 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4 text-primary">Services</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>AI Call Center</li>
-                <li>Multilingual Support</li>
-                <li>24/7 Automation</li>
-                <li>Analytics Dashboard</li>
+                <li>Professionelles Call Center</li>
+                <li>Mehrsprachiger Support</li>
+                <li>Erweiterte Servicezeiten</li>
+                <li>Detaillierte Berichte</li>
               </ul>
             </div>
             
@@ -304,7 +304,7 @@ const Index = () => {
           </div>
           
           <div className="border-t border-white/10 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 MultiCall Pro. Die Zukunft spricht alle Sprachen.</p>
+            <p>&copy; 2025 MultiCall Pro. Seit 7 Jahren Ihr Partner für professionelle Kundenbetreuung.</p>
           </div>
         </div>
       </footer>
