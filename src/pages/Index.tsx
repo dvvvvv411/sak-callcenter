@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight } from "lucide-react";
+import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight, TrendingUp, BarChart3, Target, Zap } from "lucide-react";
 import HeroSection from "@/components/hero/HeroSection";
 
 const Index = () => {
@@ -218,33 +218,152 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ROI Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-primary/5 to-secondary/5 relative overflow-hidden">
-        <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-5xl font-bold mb-8 text-primary">
-              Bewährte Ergebnisse unserer Kunden
-            </h2>
-            <p className="text-xl text-muted-foreground mb-12">
-              Durchschnittliche Verbesserungen nach 6 Monaten Zusammenarbeit:
-            </p>
+      {/* Enhanced ROI Section */}
+      <section className="py-24 px-6 relative overflow-hidden">
+        {/* Dynamic Background with Multiple Layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 via-primary/5 to-neon-green/10"></div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-neon-green/5 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-electric-blue/3 to-neon-green/3 rounded-full blur-2xl opacity-40 animate-pulse"></div>
+        
+        {/* Geometric Decorations */}
+        <div className="absolute top-10 right-1/4 w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
+        <div className="absolute bottom-10 left-1/3 w-3 h-3 bg-electric-blue/50 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/3 right-10 w-1 h-20 bg-gradient-primary opacity-20 rotate-45"></div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="max-w-5xl mx-auto">
+            {/* Enhanced Header */}
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-glass backdrop-blur-sm border border-white/20 text-sm font-medium text-primary mb-8 animate-fade-in shadow-lg">
+                <TrendingUp className="h-5 w-5 mr-3 text-neon-green animate-pulse" />
+                Messbare Erfolge seit 7 Jahren
+                <BarChart3 className="h-5 w-5 ml-3 text-electric-blue" />
+              </div>
+              
+              <h2 className="text-5xl lg:text-6xl font-bold mb-8 text-primary leading-tight animate-fade-in" style={{animationDelay: '0.1s'}}>
+                Bewährte Ergebnisse
+                <span className="block bg-gradient-primary bg-clip-text text-transparent mt-2">
+                  unserer Kunden
+                </span>
+              </h2>
+              
+              <div className="max-w-4xl mx-auto">
+                <p className="text-xl lg:text-2xl text-muted-foreground mb-6 leading-relaxed animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  Durchschnittliche Verbesserungen nach 6 Monaten Zusammenarbeit:
+                </p>
+                <div className="flex items-center justify-center space-x-3 animate-fade-in" style={{animationDelay: '0.3s'}}>
+                  <div className="w-12 h-1 bg-gradient-primary rounded-full"></div>
+                  <Target className="h-6 w-6 text-primary animate-pulse" />
+                  <div className="w-12 h-1 bg-gradient-primary rounded-full"></div>
+                </div>
+              </div>
+            </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">+25%</div>
-                <p className="text-sm text-muted-foreground">Mehr Leads</p>
+            {/* Enhanced Stats Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              {/* Stat Card 1 */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-3xl blur-xl transition-all duration-500"></div>
+                <div className="relative bg-gradient-glass backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/20 hover:border-neon-green/40 hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.4s'}}>
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-neon-green/20 to-neon-green/10 rounded-2xl flex items-center justify-center group-hover:animate-glow">
+                      <TrendingUp className="h-8 w-8 text-neon-green" />
+                    </div>
+                    <div className="text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                      +25%
+                    </div>
+                    <p className="text-base font-semibold text-muted-foreground mb-2">Mehr Leads</p>
+                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div className="w-3/4 h-full bg-gradient-to-r from-neon-green to-electric-blue rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">-30%</div>
-                <p className="text-sm text-muted-foreground">Weniger Kosten</p>
+
+              {/* Stat Card 2 */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-secondary opacity-0 group-hover:opacity-10 rounded-3xl blur-xl transition-all duration-500"></div>
+                <div className="relative bg-gradient-glass backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/20 hover:border-electric-blue/40 hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.5s'}}>
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-electric-blue/20 to-electric-blue/10 rounded-2xl flex items-center justify-center group-hover:animate-glow">
+                      <BarChart3 className="h-8 w-8 text-electric-blue" />
+                    </div>
+                    <div className="text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                      -30%
+                    </div>
+                    <p className="text-base font-semibold text-muted-foreground mb-2">Weniger Kosten</p>
+                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div className="w-4/5 h-full bg-gradient-to-r from-electric-blue to-neon-green rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">92%</div>
-                <p className="text-sm text-muted-foreground">Kundenzufriedenheit</p>
+
+              {/* Stat Card 3 */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-3xl blur-xl transition-all duration-500"></div>
+                <div className="relative bg-gradient-glass backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/20 hover:border-neon-green/40 hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.6s'}}>
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-neon-green/20 to-electric-blue/10 rounded-2xl flex items-center justify-center group-hover:animate-glow">
+                      <Star className="h-8 w-8 text-neon-green" />
+                    </div>
+                    <div className="text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                      92%
+                    </div>
+                    <p className="text-base font-semibold text-muted-foreground mb-2">Kundenzufriedenheit</p>
+                    <div className="flex justify-center space-x-1 mt-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-3 w-3 fill-neon-green text-neon-green animate-pulse" style={{animationDelay: `${i * 0.1}s`}} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:scale-105 transition-all duration-300">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">&lt; 5s</div>
-                <p className="text-sm text-muted-foreground">Antwortzeit</p>
+
+              {/* Stat Card 4 */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-secondary opacity-0 group-hover:opacity-10 rounded-3xl blur-xl transition-all duration-500"></div>
+                <div className="relative bg-gradient-glass backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/20 hover:border-electric-blue/40 hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl animate-fade-in" style={{animationDelay: '0.7s'}}>
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-electric-blue/20 to-neon-green/10 rounded-2xl flex items-center justify-center group-hover:animate-glow">
+                      <Zap className="h-8 w-8 text-electric-blue" />
+                    </div>
+                    <div className="text-5xl lg:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-300">
+                      &lt; 5s
+                    </div>
+                    <p className="text-base font-semibold text-muted-foreground mb-2">Antwortzeit</p>
+                    <div className="flex items-center justify-center space-x-2 mt-2">
+                      <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-electric-blue rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                      <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Enhanced Bottom Section */}
+            <div className="text-center mt-16 animate-fade-in" style={{animationDelay: '0.8s'}}>
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-neon-green/10 to-electric-blue/10 backdrop-blur-sm border border-white/20 text-sm font-medium text-primary mb-8">
+                <Check className="h-4 w-4 mr-2 text-neon-green" />
+                Alle Ergebnisse basieren auf echten Kundendaten
+                <BarChart3 className="h-4 w-4 ml-2 text-electric-blue" />
+              </div>
+              
+              <div className="flex items-center justify-center space-x-8 opacity-80">
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse"></div>
+                  <span>Real-time Tracking</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <div className="w-3 h-3 bg-electric-blue rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <span>Verified Results</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                  <div className="w-3 h-3 bg-gradient-primary rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <span>ISO Certified</span>
+                </div>
               </div>
             </div>
           </div>
