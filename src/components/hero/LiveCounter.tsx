@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import { Phone } from 'lucide-react';
+import { Phone, TrendingUp } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const LiveCounter = () => {
   const [activeCallsCount, setActiveCallsCount] = useState(247);
@@ -18,19 +19,31 @@ const LiveCounter = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:scale-105 transition-all duration-300">
-      <div className="flex items-center justify-between mb-4">
-        <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center animate-glow">
-          <Phone className="h-6 w-6 text-white" />
+    <Card className="hover:scale-105 transition-all duration-300 border-primary/20 shadow-lg">
+      <CardHeader className="pb-3">
+        <div className="flex items-center justify-between">
+          <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
+            <Phone className="h-5 w-5 text-white" />
+          </div>
+          <div className="flex items-center space-x-1 text-neon-green text-xs font-semibold">
+            <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
+            <span>LIVE</span>
+          </div>
         </div>
-        <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse"></div>
-      </div>
-      <div className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-        {activeCallsCount}
-      </div>
-      <p className="text-sm text-muted-foreground">Aktive Gespräche</p>
-      <div className="mt-3 text-xs text-neon-green">●LIVE</div>
-    </div>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-2">
+          <div className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            {activeCallsCount}
+          </div>
+          <CardTitle className="text-sm text-muted-foreground">Aktive Gespräche</CardTitle>
+          <div className="flex items-center space-x-1 text-xs text-neon-green">
+            <TrendingUp className="h-3 w-3" />
+            <span>+12% heute</span>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 

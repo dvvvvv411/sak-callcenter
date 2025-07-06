@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Globe, ChevronRight } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const languages = [
   { code: 'DE', name: 'Deutsch', flag: '🇩🇪' },
@@ -25,17 +26,23 @@ const LanguageSelector = () => {
   const currentLang = languages[currentIndex];
 
   return (
-    <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:scale-105 transition-all duration-300">
-      <div className="flex items-center justify-between mb-4">
-        <div className="w-12 h-12 bg-gradient-secondary rounded-xl flex items-center justify-center animate-glow">
-          <Globe className="h-6 w-6 text-white" />
+    <Card className="hover:scale-105 transition-all duration-300 border-secondary/20 shadow-lg">
+      <CardHeader className="pb-3">
+        <div className="flex items-center justify-between">
+          <div className="w-10 h-10 bg-gradient-secondary rounded-lg flex items-center justify-center">
+            <Globe className="h-5 w-5 text-white" />
+          </div>
+          <ChevronRight className="h-4 w-4 text-primary animate-pulse" />
         </div>
-        <ChevronRight className="h-5 w-5 text-primary animate-pulse" />
-      </div>
-      <div className="text-2xl mb-2">{currentLang.flag}</div>
-      <div className="text-lg font-semibold text-primary mb-1">{currentLang.name}</div>
-      <p className="text-sm text-muted-foreground">Verfügbar 24/7</p>
-    </div>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-2">
+          <div className="text-2xl">{currentLang.flag}</div>
+          <CardTitle className="text-sm font-semibold text-primary">{currentLang.name}</CardTitle>
+          <p className="text-xs text-muted-foreground">Verfügbar 24/7</p>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 

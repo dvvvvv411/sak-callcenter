@@ -47,7 +47,7 @@ const HeroSection = () => {
             <HeroStats />
           </div>
 
-          {/* Right Column - Interactive Elements */}
+          {/* Right Column - Interactive Dashboard */}
           <div className="space-y-6 flex flex-col justify-center min-h-[600px]">
             <div className="grid grid-cols-2 gap-4">
               <LiveCounter />
@@ -55,6 +55,8 @@ const HeroSection = () => {
             </div>
             
             <ChatPreview />
+            
+            <StatsCard />
           </div>
         </div>
       </div>
@@ -63,4 +65,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
