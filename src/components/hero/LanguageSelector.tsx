@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Globe, ChevronRight } from 'lucide-react';
 
 const languages = [
@@ -14,7 +14,7 @@ const languages = [
 const LanguageSelector = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useState(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % languages.length);
     }, 2500);
