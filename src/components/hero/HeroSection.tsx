@@ -1,4 +1,5 @@
 
+
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, ChevronRight } from "lucide-react";
 import LiveCounter from "./LiveCounter";
@@ -54,21 +55,6 @@ const HeroSection = () => {
             </div>
             
             <ChatPreview />
-            
-            <div className="bg-gradient-glass backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <div className="text-center space-y-4">
-                <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                  92%
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Kundenzufriedenheit nach 6 Monaten
-                </p>
-                <Button variant="outline" size="sm" className="text-sm border-primary/30 text-primary hover:bg-primary/5">
-                  <Mail className="h-4 w-4 mr-2" />
-                  Beratungstermin buchen
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -77,3 +63,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
