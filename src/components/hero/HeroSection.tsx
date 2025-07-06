@@ -5,7 +5,6 @@ import LiveCounter from "./LiveCounter";
 import LanguageSelector from "./LanguageSelector";
 import ChatPreview from "./ChatPreview";
 import HeroStats from "./HeroStats";
-import StatsCard from "./StatsCard";
 
 const HeroSection = () => {
   return (
@@ -55,8 +54,6 @@ const HeroSection = () => {
             </div>
             
             <ChatPreview />
-            
-            <StatsCard />
           </div>
         </div>
       </div>
