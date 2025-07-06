@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Index = () => {
   return (
@@ -36,7 +37,14 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 via-transparent to-neon-green/5"></div>
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBg})` }}
+        ></div>
+        {/* Dark Gradient Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-background/40"></div>
+        {/* Additional design elements */}
         <div className="absolute top-20 right-20 w-72 h-72 bg-electric-blue/10 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-20 left-20 w-72 h-72 bg-neon-green/10 rounded-full blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
         
