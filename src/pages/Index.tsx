@@ -1,40 +1,15 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight, TrendingUp, BarChart3, Target, Zap } from "lucide-react";
 import HeroSection from "@/components/hero/HeroSection";
+import Navigation from "@/components/shared/Navigation";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center animate-glow">
-              <Phone className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              MultiCall Pro
-            </span>
-          </div>
-          <div className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" className="text-muted-foreground hover:text-primary">
-              Services
-            </Button>
-            <Button variant="ghost" className="text-muted-foreground hover:text-primary">
-              Technologie
-            </Button>
-            <Button variant="ghost" className="text-muted-foreground hover:text-primary">
-              Preise
-            </Button>
-            <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-              Beratung buchen
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <HeroSection />
@@ -414,9 +389,11 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center">
-                  <Phone className="h-5 w-5 text-white" />
-                </div>
+                <img 
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-qGHpbTfUbMw1i1BqWQJZFGTD9c3rvR.png" 
+                  alt="MultiCall Pro Logo" 
+                  className="h-10 w-10"
+                />
                 <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                   MultiCall Pro
                 </span>

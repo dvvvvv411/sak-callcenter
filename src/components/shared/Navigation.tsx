@@ -9,7 +9,7 @@ const Navigation = () => {
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/services", label: "Services" },
-    { path: "/pricing", label: "Pricing" },
+    { path: "/pricing", label: "Preise" },
     { path: "/contact", label: "Contact" }
   ];
 
@@ -17,8 +17,15 @@ const Navigation = () => {
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            CallCenter Pro
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-qGHpbTfUbMw1i1BqWQJZFGTD9c3rvR.png" 
+              alt="MultiCall Pro Logo" 
+              className="h-10 w-10"
+            />
+            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              MultiCall Pro
+            </span>
           </Link>
           <div className="flex items-center space-x-6">
             {navItems.map((item) => (
