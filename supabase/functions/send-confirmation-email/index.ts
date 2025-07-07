@@ -112,9 +112,9 @@ const handler = async (req: Request): Promise<Response> => {
           
           <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
             <h4 style="margin-top: 0; color: #333;">Kontaktinformationen:</h4>
-            <p><strong>E-Mail:</strong> info@sak-service.de<br>
-            <strong>Telefon:</strong> +49 123 456 789<br>
-            <strong>Website:</strong> www.sak-service.de</p>
+            <p><strong>E-Mail:</strong> kontakt@sakservice.de<br>
+            <strong>Telefon:</strong> +49 (0) 30 12345678<br>
+            <strong>Website:</strong> www.sakservice.de</p>
           </div>
           
           <p style="font-size: 12px; color: #666; margin-top: 20px;">

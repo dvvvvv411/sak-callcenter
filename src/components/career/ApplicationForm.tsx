@@ -135,24 +135,22 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
 
       if (error) throw error;
 
-      // Send confirmation email
-      try {
-        await supabase.functions.invoke('send-confirmation-email', {
-          body: { 
-            email: data.email,
-            firstName: data.firstName,
-            lastName: data.lastName,
-            jobTitle: jobTitle,
-            useStoredKey: true
-          }
-        });
-      } catch (emailError) {
+      // Show success dialog immediately
+      setShowSuccessDialog(true);
+
+      // Send confirmation email asynchronously (don't block UI)
+      supabase.functions.invoke('send-confirmation-email', {
+        body: { 
+          email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          jobTitle: jobTitle,
+          useStoredKey: true
+        }
+      }).catch(emailError => {
         console.error('Error sending confirmation email:', emailError);
         // Don't show error to user as application was successful
-      }
-
-      // Show success dialog instead of toast
-      setShowSuccessDialog(true);
+      });
 
       // Reset form
       form.reset();
