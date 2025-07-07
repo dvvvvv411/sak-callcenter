@@ -52,7 +52,7 @@ const handler = async (req: Request): Promise<Response> => {
           email,
           first_name,
           last_name,
-          jobs!inner(title)
+          jobs!job_id(title)
         `)
         .eq('id', applicationId)
         .single();
