@@ -14,6 +14,125 @@ export type Database = {
   }
   public: {
     Tables: {
+      applications: {
+        Row: {
+          birth_date: string
+          city: string
+          cover_letter_file_url: string | null
+          created_at: string
+          cv_file_url: string | null
+          email: string
+          first_name: string
+          id: string
+          job_id: string | null
+          languages: string[]
+          last_name: string
+          marital_status: string
+          message: string | null
+          nationality: string
+          phone: string
+          postal_code: string
+          street_address: string
+        }
+        Insert: {
+          birth_date: string
+          city: string
+          cover_letter_file_url?: string | null
+          created_at?: string
+          cv_file_url?: string | null
+          email: string
+          first_name: string
+          id?: string
+          job_id?: string | null
+          languages?: string[]
+          last_name: string
+          marital_status: string
+          message?: string | null
+          nationality: string
+          phone: string
+          postal_code: string
+          street_address: string
+        }
+        Update: {
+          birth_date?: string
+          city?: string
+          cover_letter_file_url?: string | null
+          created_at?: string
+          cv_file_url?: string | null
+          email?: string
+          first_name?: string
+          id?: string
+          job_id?: string | null
+          languages?: string[]
+          last_name?: string
+          marital_status?: string
+          message?: string | null
+          nationality?: string
+          phone?: string
+          postal_code?: string
+          street_address?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      jobs: {
+        Row: {
+          about_position: string | null
+          application_deadline: string | null
+          benefits: string | null
+          created_at: string
+          employment_type: string | null
+          experience_required: string | null
+          id: string
+          is_active: boolean | null
+          location: string | null
+          qualifications: string | null
+          responsibilities: string | null
+          salary: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          about_position?: string | null
+          application_deadline?: string | null
+          benefits?: string | null
+          created_at?: string
+          employment_type?: string | null
+          experience_required?: string | null
+          id?: string
+          is_active?: boolean | null
+          location?: string | null
+          qualifications?: string | null
+          responsibilities?: string | null
+          salary?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          about_position?: string | null
+          application_deadline?: string | null
+          benefits?: string | null
+          created_at?: string
+          employment_type?: string | null
+          experience_required?: string | null
+          id?: string
+          is_active?: boolean | null
+          location?: string | null
+          qualifications?: string | null
+          responsibilities?: string | null
+          salary?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string

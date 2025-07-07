@@ -10,6 +10,8 @@ import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
+import Career from "./pages/Career";
+import JobDetail from "./pages/JobDetail";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import Impressum from "./pages/Impressum";
@@ -30,6 +32,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/job/:id" element={<JobDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={
