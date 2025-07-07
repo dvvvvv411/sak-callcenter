@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, Calendar, MessageSquare } from "lucide-react";
@@ -90,9 +89,9 @@ const ContactInfo = () => {
               <div>
                 <h3 className="text-lg font-semibold mb-2">Unser Standort</h3>
                 <div className="text-muted-foreground space-y-1">
-                  <div>CallCenter Pro GmbH</div>
-                  <div>Friedrichstraße 123</div>
-                  <div>10117 Berlin</div>
+                  <div>SAK Service GmbH</div>
+                  <div>Buchkremerstr. 6</div>
+                  <div>52062 Aachen</div>
                   <div>Deutschland</div>
                 </div>
               </div>
