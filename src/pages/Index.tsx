@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight, TrendingUp, BarChart3, Target, Zap, Rocket, Globe, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import HeroSection from "@/components/hero/HeroSection";
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
@@ -192,10 +193,12 @@ const Index = () => {
 
           {/* Additional CTA */}
           <div className="text-center mt-12 animate-fade-in" style={{animationDelay: '0.6s'}}>
-            <Button size="lg" className="text-lg px-12 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl text-white border-0 animate-glow">
-              <ArrowUp className="h-6 w-6 mr-3 rotate-45" />
-              Kostenloses Beratungsgespräch
-            </Button>
+            <Link to="/contact">
+              <Button size="lg" className="text-lg px-12 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl text-white border-0 animate-glow">
+                <ArrowUp className="h-6 w-6 mr-3 rotate-45" />
+                Kostenloses Beratungsgespräch
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -469,16 +472,20 @@ const Index = () => {
           {/* Enhanced CTA Buttons - Smaller */}
           <div className="text-center mb-8 animate-fade-in" style={{animationDelay: '0.7s'}}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-              <Button size="lg" className="text-lg px-12 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-electric-blue/20 text-white border-0 animate-glow group">
-                <Rocket className="h-5 w-5 mr-3 group-hover:animate-pulse" />
-                Jetzt kostenlos starten
-                <ChevronRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-12 py-6 border-primary/30 text-primary hover:bg-primary/5 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-xl group">
-                <Mail className="h-5 w-5 mr-3 group-hover:animate-pulse" />
-                Beratungstermin buchen
-                <ChevronRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" className="text-lg px-12 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-electric-blue/20 text-white border-0 animate-glow group">
+                  <Rocket className="h-5 w-5 mr-3 group-hover:animate-pulse" />
+                  Jetzt kostenlos starten
+                  <ChevronRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="outline" size="lg" className="text-lg px-12 py-6 border-primary/30 text-primary hover:bg-primary/5 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-xl group">
+                  <Mail className="h-5 w-5 mr-3 group-hover:animate-pulse" />
+                  Beratungstermin buchen
+                  <ChevronRight className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Link>
             </div>
             
             {/* Trust indicators with animations */}

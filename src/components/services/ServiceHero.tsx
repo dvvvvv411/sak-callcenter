@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Phone, Users, Globe, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ServiceHero = () => {
   return (
@@ -27,10 +28,12 @@ const ServiceHero = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white border-0">
-              <Phone className="h-5 w-5 mr-3" />
-              Kostenlose Beratung
-            </Button>
+            <Link to="/contact">
+              <Button size="lg" className="text-lg px-8 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white border-0">
+                <Phone className="h-5 w-5 mr-3" />
+                Kostenlose Beratung
+              </Button>
+            </Link>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 text-primary hover:bg-primary/5">
               Services entdecken
             </Button>

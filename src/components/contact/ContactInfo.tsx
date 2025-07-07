@@ -70,7 +70,18 @@ const ContactInfo = () => {
                           <Clock className="h-3 w-3 mr-1" />
                           {method.available}
                         </span>
-                        <Button size="sm" variant="outline" className="border-primary/30 text-primary hover:bg-primary hover:text-white">
+                        <Button 
+                          size="sm" 
+                          variant="outline" 
+                          className="border-primary/30 text-primary hover:bg-primary hover:text-white"
+                          onClick={() => {
+                            if (method.title === "Telefon") {
+                              window.open("tel:+4930123456789", "_self");
+                            } else if (method.title === "E-Mail") {
+                              window.open("mailto:info@sak-callcenter.de", "_self");
+                            }
+                          }}
+                        >
                           {method.action}
                         </Button>
                       </div>
@@ -95,7 +106,13 @@ const ContactInfo = () => {
                   <div>Deutschland</div>
                 </div>
               </div>
-              <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary hover:text-white">
+              <Button 
+                variant="outline" 
+                className="border-primary/30 text-primary hover:bg-primary hover:text-white"
+                onClick={() => {
+                  window.open("https://maps.google.com/?q=Buchkremerstr.+6,+52062+Aachen", "_blank");
+                }}
+              >
                 Route planen
               </Button>
             </CardContent>

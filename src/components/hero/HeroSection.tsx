@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import LiveCounter from "./LiveCounter";
 import LanguageSelector from "./LanguageSelector";
 import ChatPreview from "./ChatPreview";
@@ -53,14 +54,18 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="text-lg px-8 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white border-0 animate-glow">
-                <Phone className="h-5 w-5 mr-3" />
-                Sofort loslegen - Kostenlos
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 text-primary hover:bg-primary/5 backdrop-blur-sm">
-                Live Demo ansehen
-                <ChevronRight className="h-4 w-4 ml-2" />
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" className="text-lg px-8 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white border-0 animate-glow">
+                  <Phone className="h-5 w-5 mr-3" />
+                  Sofort loslegen - Kostenlos
+                </Button>
+              </Link>
+              <Link to="/services">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 text-primary hover:bg-primary/5 backdrop-blur-sm">
+                  Services entdecken
+                  <ChevronRight className="h-4 w-4 ml-2" />
+                </Button>
+              </Link>
             </div>
 
             <HeroStats />
