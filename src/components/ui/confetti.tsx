@@ -17,7 +17,7 @@ export const Confetti = ({ active, onComplete }: ConfettiProps) => {
       }
 
       // Create confetti burst
-      const duration = 3000;
+      const duration = 1500;
       const animationEnd = Date.now() + duration;
       
       const randomInRange = (min: number, max: number) => {
@@ -32,24 +32,24 @@ export const Confetti = ({ active, onComplete }: ConfettiProps) => {
           return;
         }
 
-        const particleCount = 50 * (timeLeft / duration);
+        const particleCount = 25 * (timeLeft / duration);
 
         // Left side
         confetti({
-          particleCount,
+          particleCount: Math.ceil(particleCount / 2),
           angle: 60,
-          spread: 55,
+          spread: 45,
           origin: { x: 0 },
-          colors: ['#007bff', '#8b5cf6', '#10b981', '#f59e0b']
+          colors: ['#2563eb', '#059669', '#dc2626', '#d97706']
         });
 
         // Right side  
         confetti({
-          particleCount,
+          particleCount: Math.ceil(particleCount / 2),
           angle: 120,
-          spread: 55,
+          spread: 45,
           origin: { x: 1 },
-          colors: ['#007bff', '#8b5cf6', '#10b981', '#f59e0b']
+          colors: ['#2563eb', '#059669', '#dc2626', '#d97706']
         });
 
         if (timeLeft > 0) {
