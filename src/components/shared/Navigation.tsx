@@ -1,13 +1,16 @@
 
 import { Button } from "@/components/ui/button";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, User, LogOut, Settings } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, signOut, isAdmin } = useAuth();
   useScrollToTop();
 
   const navItems = [
@@ -52,12 +55,48 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            <Link to="/contact">
-              <Button size="sm" className="bg-gradient-primary text-white">
-                <Phone className="h-4 w-4 mr-2" />
-                Jetzt starten
-              </Button>
-            </Link>
+            
+            {user ? (
+              <div className="flex items-center space-x-4">
+                {isAdmin && (
+                  <Link to="/admin" className="text-foreground hover:text-primary transition-colors">
+                    <Settings className="h-4 w-4" />
+                  </Link>
+                )}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                      <User className="h-4 w-4" />
+                      <span className="hidden lg:inline">Profil</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    {isAdmin && (
+                      <>
+                        <DropdownMenuItem asChild>
+                          <Link to="/admin">
+                            <Settings className="h-4 w-4 mr-2" />
+                            Admin Panel
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                      </>
+                    )}
+                    <DropdownMenuItem onClick={signOut}>
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Abmelden
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            ) : (
+              <Link to="/auth">
+                <Button size="sm" className="bg-gradient-primary text-white">
+                  <Phone className="h-4 w-4 mr-2" />
+                  Jetzt starten
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -92,12 +131,37 @@ const Navigation = () => {
                   {item.label}
                 </Link>
               ))}
-              <Link to="/contact" onClick={closeMobileMenu}>
-                <Button className="bg-gradient-primary text-white w-full py-3 h-auto">
-                  <Phone className="h-4 w-4 mr-2" />
-                  Jetzt starten
-                </Button>
-              </Link>
+              
+              {user ? (
+                <div className="space-y-2">
+                  {isAdmin && (
+                    <Link to="/admin" onClick={closeMobileMenu}>
+                      <Button variant="outline" className="w-full py-3 h-auto">
+                        <Settings className="h-4 w-4 mr-2" />
+                        Admin Panel
+                      </Button>
+                    </Link>
+                  )}
+                  <Button 
+                    onClick={() => {
+                      signOut();
+                      closeMobileMenu();
+                    }}
+                    variant="destructive" 
+                    className="w-full py-3 h-auto"
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Abmelden
+                  </Button>
+                </div>
+              ) : (
+                <Link to="/auth" onClick={closeMobileMenu}>
+                  <Button className="bg-gradient-primary text-white w-full py-3 h-auto">
+                    <Phone className="h-4 w-4 mr-2" />
+                    Jetzt starten
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         )}
