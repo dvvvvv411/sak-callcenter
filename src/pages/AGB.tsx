@@ -31,7 +31,7 @@ const AGB = () => {
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
                   Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen 
-                  der SAK GmbH und ihren Kunden über die Erbringung von Call-Center-Dienstleistungen 
+                  der SAK Service GmbH und ihren Kunden über die Erbringung von Call-Center-Dienstleistungen 
                   und damit verbundenen Services.
                 </p>
               </CardContent>
@@ -47,7 +47,7 @@ const AGB = () => {
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
                   Der Vertrag kommt durch die schriftliche Bestätigung unseres Angebots durch den 
-                  Kunden oder durch die Auftragsbestätigung der SAK GmbH zustande. Mündliche 
+                  Kunden oder durch die Auftragsbestätigung der SAK Service GmbH zustande. Mündliche 
                   Nebenabreden bedürfen der schriftlichen Bestätigung.
                 </p>
               </CardContent>
@@ -127,7 +127,7 @@ const AGB = () => {
               <CardContent>
                 <p className="text-muted-foreground">
                   Bei Fragen zu diesen AGB wenden Sie sich bitte an:<br />
-                  E-Mail: info@sak-service.de<br />
+                  E-Mail: info@sak-callcenter.de<br />
                   Telefon: +49 (0) 800 123 4567
                 </p>
               </CardContent>

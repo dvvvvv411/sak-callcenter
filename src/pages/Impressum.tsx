@@ -29,10 +29,10 @@ const Impressum = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <h3 className="font-semibold text-primary">SAK GmbH</h3>
+                    <h3 className="font-semibold text-primary">SAK Service GmbH</h3>
                     <p className="text-muted-foreground">
-                      Musterstraße 123<br />
-                      12345 Musterstadt<br />
+                      Buchkremerstr. 6<br />
+                      52062 Aachen<br />
                       Deutschland
                     </p>
                   </div>
@@ -45,7 +45,7 @@ const Impressum = () => {
                 
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-primary" />
-                  <p className="text-muted-foreground">info@sak-service.de</p>
+                  <p className="text-muted-foreground">info@sak-callcenter.de</p>
                 </div>
               </CardContent>
             </Card>
@@ -65,8 +65,8 @@ const Impressum = () => {
               </CardHeader>
               <CardContent className="space-y-2">
                 <p className="text-muted-foreground">
-                  Registergericht: Amtsgericht Musterstadt<br />
-                  Registernummer: HRB 12345
+                  Registergericht: Amtsgericht Aachen<br />
+                  Registernummer: HRB 22562
                 </p>
               </CardContent>
             </Card>
@@ -78,7 +78,7 @@ const Impressum = () => {
               <CardContent>
                 <p className="text-muted-foreground">
                   Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br />
-                  DE123456789
+                  DE361962834
                 </p>
               </CardContent>
             </Card>
@@ -90,8 +90,8 @@ const Impressum = () => {
               <CardContent>
                 <p className="text-muted-foreground">
                   Max Mustermann<br />
-                  Musterstraße 123<br />
-                  12345 Musterstadt
+                  Buchkremerstr. 6<br />
+                  52062 Aachen
                 </p>
               </CardContent>
             </Card>

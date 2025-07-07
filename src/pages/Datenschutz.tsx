@@ -99,7 +99,7 @@ const Datenschutz = () => {
               <CardContent>
                 <p className="text-muted-foreground">
                   Bei Fragen zum Datenschutz wenden Sie sich bitte an:<br />
-                  E-Mail: datenschutz@sak-service.de<br />
+                  E-Mail: info@sak-callcenter.de<br />
                   Telefon: +49 (0) 800 123 4567
                 </p>
               </CardContent>

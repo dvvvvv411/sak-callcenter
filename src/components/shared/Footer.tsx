@@ -29,7 +29,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>Musterstraße 123, 12345 Musterstadt</span>
+                <span>Buchkremerstr. 6, 52062 Aachen</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
@@ -37,7 +37,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>info@sak-service.de</span>
+                <span>info@sak-callcenter.de</span>
               </div>
             </div>
           </div>
@@ -136,7 +136,7 @@ const Footer = () => {
         <div className="border-t border-primary/20 pt-8 text-center">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              &copy; 2025 SAK GmbH. Seit 7 Jahren Ihr Partner für professionelle Kundenbetreuung.
+              &copy; 2025 SAK Service GmbH. Seit 7 Jahren Ihr Partner für professionelle Kundenbetreuung.
             </p>
             <div className="flex items-center space-x-6 text-xs text-muted-foreground">
               <div className="flex items-center space-x-2">
