@@ -29,11 +29,11 @@ const Navigation = () => {
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
+          <Link to="/" className="flex items-center md:justify-start justify-center flex-1 md:flex-none" onClick={closeMobileMenu}>
             <img 
               src="https://i.imgur.com/CIi9DJl.png" 
               alt="SAK Logo" 
-              className="h-20 w-auto"
+              className="h-16 md:h-20 w-auto"
             />
           </Link>
 
@@ -63,7 +63,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors absolute right-6"
             aria-label="Menu öffnen"
           >
             {isMobileMenuOpen ? (
@@ -83,17 +83,17 @@ const Navigation = () => {
                   key={item.path}
                   to={item.path} 
                   onClick={closeMobileMenu}
-                  className={`transition-colors py-2 ${
+                  className={`transition-colors py-3 px-4 text-center rounded-md ${
                     location.pathname === item.path 
-                      ? "text-primary font-medium" 
-                      : "text-foreground hover:text-primary"
+                      ? "text-primary font-medium bg-primary/10" 
+                      : "text-foreground hover:text-primary hover:bg-muted"
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
               <Link to="/contact" onClick={closeMobileMenu}>
-                <Button size="sm" className="bg-gradient-primary text-white w-full">
+                <Button className="bg-gradient-primary text-white w-full py-3 h-auto">
                   <Phone className="h-4 w-4 mr-2" />
                   Jetzt starten
                 </Button>
