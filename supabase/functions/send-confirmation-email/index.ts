@@ -8,10 +8,13 @@ const corsHeaders = {
 };
 
 interface EmailRequest {
-  email: string;
-  firstName: string;
-  lastName: string;
-  jobTitle: string;
+  // Direct data (from ApplicationForm)
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  jobTitle?: string;
+  // Application ID (from Admin Panel)
+  applicationId?: string;
   useStoredKey?: boolean;
 }
 
@@ -27,7 +30,66 @@ const handler = async (req: Request): Promise<Response> => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
 
-    const { email, firstName, lastName, jobTitle, useStoredKey = false }: EmailRequest = await req.json();
+    const { email, firstName, lastName, jobTitle, applicationId, useStoredKey = false }: EmailRequest = await req.json();
+
+    console.log('Received request with:', { email: !!email, firstName: !!firstName, lastName: !!lastName, jobTitle: !!jobTitle, applicationId: !!applicationId, useStoredKey });
+
+    let applicationData: {
+      email: string;
+      firstName: string;
+      lastName: string;
+      jobTitle: string;
+    };
+
+    // Determine data source and validate
+    if (applicationId) {
+      console.log('Fetching application data from database for applicationId:', applicationId);
+      
+      // Fetch application data from database (Admin Panel scenario)
+      const { data: application, error: appError } = await supabaseClient
+        .from('applications')
+        .select(`
+          email,
+          first_name,
+          last_name,
+          jobs!inner(title)
+        `)
+        .eq('id', applicationId)
+        .single();
+
+      if (appError || !application) {
+        console.error('Error fetching application:', appError);
+        return new Response(
+          JSON.stringify({ error: 'Application not found' }),
+          { status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      applicationData = {
+        email: application.email,
+        firstName: application.first_name,
+        lastName: application.last_name,
+        jobTitle: application.jobs?.title || 'Unbekannte Position'
+      };
+      
+      console.log('Fetched application data:', { email: applicationData.email, firstName: applicationData.firstName, lastName: applicationData.lastName, jobTitle: applicationData.jobTitle });
+    } else if (email && firstName && lastName && jobTitle) {
+      // Use direct data (ApplicationForm scenario)
+      applicationData = {
+        email,
+        firstName,
+        lastName,
+        jobTitle
+      };
+      
+      console.log('Using direct application data:', { email: applicationData.email, firstName: applicationData.firstName, lastName: applicationData.lastName, jobTitle: applicationData.jobTitle });
+    } else {
+      console.error('Invalid request: missing required data');
+      return new Response(
+        JSON.stringify({ error: 'Invalid request: either applicationId or direct application data (email, firstName, lastName, jobTitle) must be provided' }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
     // Get email configuration
     let resendApiKey = Deno.env.get('RESEND_API_KEY');
@@ -147,7 +209,7 @@ const handler = async (req: Request): Promise<Response> => {
                       <tr>
                         <td>
                            <p style="color: #4a5568; margin: 0 0 25px 0; font-size: 16px; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
-                             Liebe/r ${firstName} ${lastName},
+                             Liebe/r ${applicationData.firstName} ${applicationData.lastName},
                            </p>
                         </td>
                       </tr>
@@ -173,7 +235,7 @@ const handler = async (req: Request): Promise<Response> => {
                                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                                   <tr>
                                     <td style="color: #4a5568; font-size: 15px; line-height: 1.8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
-                                       <p style="margin: 0 0 12px 0;"><strong style="color: #2d3748;">Position:</strong> ${jobTitle}</p>
+                                       <p style="margin: 0 0 12px 0;"><strong style="color: #2d3748;">Position:</strong> ${applicationData.jobTitle}</p>
                                        <p style="margin: 0;"><strong style="color: #2d3748;">Bewerbungsdatum:</strong> ${new Date().toLocaleDateString('de-DE')}</p>
                                     </td>
                                   </tr>
@@ -250,8 +312,8 @@ const handler = async (req: Request): Promise<Response> => {
     // Send email
     const emailData: any = {
       from: `${senderName} <${senderEmail}>`,
-      to: [email],
-      subject: `Bewerbungsbestätigung - ${jobTitle}`,
+      to: [applicationData.email],
+      subject: `Bewerbungsbestätigung - ${applicationData.jobTitle}`,
       html: emailHtml,
     };
 
