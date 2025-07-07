@@ -7,8 +7,9 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
-import { Users, Shield, Settings, BarChart3, Briefcase, FileText, Plus, Edit, Trash2 } from 'lucide-react';
+import { Users, Shield, Settings, BarChart3, Briefcase, FileText, Plus, Edit, Trash2, Eye, Download } from 'lucide-react';
 import { JobManagementDialog } from '@/components/admin/JobManagementDialog';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
@@ -32,6 +33,8 @@ const Admin = () => {
   const [userRoles, setUserRoles] = useState<UserRole[]>([]);
   const [jobs, setJobs] = useState<any[]>([]);
   const [applications, setApplications] = useState<any[]>([]);
+  const [selectedApplication, setSelectedApplication] = useState<any>(null);
+  const [detailDialogOpen, setDetailDialogOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [jobDialogOpen, setJobDialogOpen] = useState(false);
   const [editingJob, setEditingJob] = useState<any>(null);
@@ -205,6 +208,41 @@ const Admin = () => {
     } catch (error) {
       console.error('Error fetching applications:', error);
     }
+  };
+
+  const openPdfFile = async (fileUrl: string) => {
+    if (!fileUrl) {
+      toast({
+        title: 'Fehler',
+        description: 'Datei nicht verfügbar.',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase.storage
+        .from('applications')
+        .download(fileUrl);
+
+      if (error) throw error;
+
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    } catch (error) {
+      console.error('Error opening PDF:', error);
+      toast({
+        title: 'Fehler',
+        description: 'PDF konnte nicht geöffnet werden.',
+        variant: 'destructive'
+      });
+    }
+  };
+
+  const showApplicationDetail = (application: any) => {
+    setSelectedApplication(application);
+    setDetailDialogOpen(true);
   };
 
   if (loading) {
@@ -415,36 +453,67 @@ const Admin = () => {
                 <CardDescription>Übersicht aller eingegangenen Bewerbungen</CardDescription>
               </CardHeader>
               <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Datum & Uhrzeit</TableHead>
-                      <TableHead>Name</TableHead>
-                      <TableHead>E-Mail</TableHead>
-                      <TableHead>Telefon</TableHead>
-                      <TableHead>Fremdsprachen</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {applications.map((app) => (
-                      <TableRow key={app.id}>
-                        <TableCell>
-                          {new Date(app.created_at).toLocaleString('de-DE')}
-                        </TableCell>
-                        <TableCell className="font-medium">
-                          {app.first_name} {app.last_name}
-                        </TableCell>
-                        <TableCell>{app.email}</TableCell>
-                        <TableCell>{app.phone}</TableCell>
-                        <TableCell>
-                          <Badge variant="secondary">
-                            {app.languages?.join(', ') || 'Keine Angabe'}
-                          </Badge>
-                        </TableCell>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Datum & Uhrzeit</TableHead>
+                        <TableHead>Name</TableHead>
+                        <TableHead>E-Mail</TableHead>
+                        <TableHead>Stelle</TableHead>
+                        <TableHead>Aktionen</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {applications.map((app) => (
+                        <TableRow key={app.id}>
+                          <TableCell>
+                            {new Date(app.created_at).toLocaleString('de-DE')}
+                          </TableCell>
+                          <TableCell className="font-medium">
+                            {app.first_name} {app.last_name}
+                          </TableCell>
+                          <TableCell>{app.email}</TableCell>
+                          <TableCell>
+                            <Badge variant="secondary">
+                              {app.jobs?.title || 'Unbekannt'}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex space-x-2">
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => showApplicationDetail(app)}
+                              >
+                                <Eye className="h-4 w-4 mr-1" />
+                                Details
+                              </Button>
+                              {app.cv_file_url && (
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => openPdfFile(app.cv_file_url)}
+                                >
+                                  <FileText className="h-4 w-4 mr-1" />
+                                  CV
+                                </Button>
+                              )}
+                              {app.cover_letter_file_url && (
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => openPdfFile(app.cover_letter_file_url)}
+                                >
+                                  <Download className="h-4 w-4 mr-1" />
+                                  Anschreiben
+                                </Button>
+                              )}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
               </CardContent>
             </Card>
           </TabsContent>
@@ -461,6 +530,99 @@ const Admin = () => {
         job={editingJob}
         onSuccess={handleJobSuccess}
       />
+
+      {/* Application Detail Dialog */}
+      <Dialog open={detailDialogOpen} onOpenChange={setDetailDialogOpen}>
+        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Bewerbungsdetails</DialogTitle>
+            <DialogDescription>
+              Vollständige Informationen zur Bewerbung
+            </DialogDescription>
+          </DialogHeader>
+          
+          {selectedApplication && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold text-sm text-muted-foreground mb-2">PERSÖNLICHE DATEN</h3>
+                  <div className="space-y-2">
+                    <p><span className="font-medium">Name:</span> {selectedApplication.first_name} {selectedApplication.last_name}</p>
+                    <p><span className="font-medium">E-Mail:</span> {selectedApplication.email}</p>
+                    <p><span className="font-medium">Telefon:</span> {selectedApplication.phone}</p>
+                    <p><span className="font-medium">Geburtsdatum:</span> {new Date(selectedApplication.birth_date).toLocaleDateString('de-DE')}</p>
+                    <p><span className="font-medium">Nationalität:</span> {selectedApplication.nationality}</p>
+                    <p><span className="font-medium">Familienstand:</span> {selectedApplication.marital_status}</p>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold text-sm text-muted-foreground mb-2">ADRESSE</h3>
+                  <div className="space-y-2">
+                    <p><span className="font-medium">Straße:</span> {selectedApplication.street_address}</p>
+                    <p><span className="font-medium">PLZ/Stadt:</span> {selectedApplication.postal_code} {selectedApplication.city}</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold text-sm text-muted-foreground mb-2">FREMDSPRACHEN</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedApplication.languages?.map((lang: string, index: number) => (
+                      <Badge key={index} variant="secondary">{lang}</Badge>
+                    ))}
+                  </div>
+                </div>
+                
+                {selectedApplication.message && (
+                  <div>
+                    <h3 className="font-semibold text-sm text-muted-foreground mb-2">NACHRICHT</h3>
+                    <p className="text-sm bg-muted p-3 rounded-md">{selectedApplication.message}</p>
+                  </div>
+                )}
+                
+                <div>
+                  <h3 className="font-semibold text-sm text-muted-foreground mb-2">DOKUMENTE</h3>
+                  <div className="space-y-2">
+                    {selectedApplication.cv_file_url && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => openPdfFile(selectedApplication.cv_file_url)}
+                        className="w-full justify-start"
+                      >
+                        <FileText className="h-4 w-4 mr-2" />
+                        Lebenslauf öffnen
+                      </Button>
+                    )}
+                    {selectedApplication.cover_letter_file_url && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => openPdfFile(selectedApplication.cover_letter_file_url)}
+                        className="w-full justify-start"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Anschreiben öffnen
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+              
+              <div className="md:col-span-2 pt-4 border-t">
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium">Bewerbung eingereicht:</span> {new Date(selectedApplication.created_at).toLocaleString('de-DE')}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium">Stelle:</span> {selectedApplication.jobs?.title || 'Unbekannt'}
+                </p>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

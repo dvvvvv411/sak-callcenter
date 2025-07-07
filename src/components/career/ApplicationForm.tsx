@@ -191,7 +191,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                   <FormItem>
                     <FormLabel>Vorname</FormLabel>
                     <FormControl>
-                      <Input placeholder="Max" {...field} />
+                      <Input placeholder="Ihr Vorname" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -204,7 +204,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                   <FormItem>
                     <FormLabel>Nachname</FormLabel>
                     <FormControl>
-                      <Input placeholder="Mustermann" {...field} />
+                      <Input placeholder="Ihr Nachname" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -220,7 +220,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                   <FormItem>
                     <FormLabel>E-Mail</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="max@example.com" {...field} />
+                      <Input type="email" placeholder="ihre.email@beispiel.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -249,7 +249,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                 <FormItem>
                   <FormLabel>Straße und Hausnummer</FormLabel>
                   <FormControl>
-                    <Input placeholder="Musterstraße 123" {...field} />
+                    <Input placeholder="Ihre Straße und Hausnummer" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -264,7 +264,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                   <FormItem>
                     <FormLabel>PLZ</FormLabel>
                     <FormControl>
-                      <Input placeholder="12345" {...field} />
+                      <Input placeholder="Ihre PLZ" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -277,7 +277,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                   <FormItem>
                     <FormLabel>Stadt</FormLabel>
                     <FormControl>
-                      <Input placeholder="Berlin" {...field} />
+                      <Input placeholder="Ihre Stadt" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -307,7 +307,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                   <FormItem>
                     <FormLabel>Nationalität</FormLabel>
                     <FormControl>
-                      <Input placeholder="Deutsch" {...field} />
+                      <Input placeholder="Ihre Nationalität" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
