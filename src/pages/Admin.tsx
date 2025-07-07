@@ -9,7 +9,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
-import { Users, Shield, Settings, BarChart3, Briefcase, FileText, Plus, Edit, Trash2, Eye, Download } from 'lucide-react';
+import { Users, Shield, Settings, BarChart3, Briefcase, FileText, Plus, Edit, Trash2, Eye, Download, Mail, Send, Loader2 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { JobManagementDialog } from '@/components/admin/JobManagementDialog';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
@@ -43,6 +45,10 @@ const Admin = () => {
     totalAdmins: 0,
     newUsersThisMonth: 0
   });
+  
+  // Resend state
+  const [emailConfig, setEmailConfig] = useState<any>(null);
+  const [resendingEmails, setResendingEmails] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     document.title = "Admin Dashboard - SAK Service GmbH";
@@ -53,6 +59,7 @@ const Admin = () => {
     fetchJobs();
     fetchApplications();
     fetchStats();
+    fetchEmailConfig();
   }, []);
 
   const fetchProfiles = async () => {
@@ -249,6 +256,85 @@ const Admin = () => {
     setDetailDialogOpen(true);
   };
 
+  const fetchEmailConfig = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('email_config')
+        .select('*')
+        .single();
+      
+      if (error) {
+        console.error('Error fetching email config:', error);
+        return;
+      }
+      
+      setEmailConfig(data);
+    } catch (error) {
+      console.error('Error fetching email config:', error);
+    }
+  };
+
+  const updateEmailConfig = async (config: any) => {
+    try {
+      const { error } = await supabase
+        .from('email_config')
+        .update(config)
+        .eq('id', emailConfig?.id || '');
+
+      if (error) throw error;
+
+      toast({
+        title: 'Erfolgreich',
+        description: 'E-Mail-Konfiguration wurde aktualisiert.',
+      });
+
+      fetchEmailConfig();
+    } catch (error) {
+      console.error('Error updating email config:', error);
+      toast({
+        title: 'Fehler',
+        description: 'E-Mail-Konfiguration konnte nicht aktualisiert werden.',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const resendConfirmationEmail = async (applicationId: string) => {
+    setResendingEmails(prev => new Set(prev).add(applicationId));
+    
+    try {
+      const { error } = await supabase.functions.invoke('send-confirmation-email', {
+        body: { 
+          applicationId,
+          useStoredKey: true
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: 'E-Mail gesendet',
+        description: 'Bestätigungs-E-Mail wurde erfolgreich gesendet.',
+      });
+
+      // Refresh applications to update email sent status
+      fetchApplications();
+    } catch (error) {
+      console.error('Error resending email:', error);
+      toast({
+        title: 'Fehler',
+        description: 'E-Mail konnte nicht gesendet werden.',
+        variant: 'destructive',
+      });
+    } finally {
+      setResendingEmails(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(applicationId);
+        return newSet;
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -299,12 +385,13 @@ const Admin = () => {
           </Card>
         </div>
 
-        {/* Users Management */}
+        {/* Admin Management */}
         <Tabs defaultValue="users" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="users">Benutzer</TabsTrigger>
             <TabsTrigger value="jobs">Stellen</TabsTrigger>
             <TabsTrigger value="applications">Bewerbungen</TabsTrigger>
+            <TabsTrigger value="resend">Resend</TabsTrigger>
           </TabsList>
 
           <TabsContent value="users">
@@ -507,7 +594,7 @@ const Admin = () => {
                                   CV
                                 </Button>
                               )}
-                              {app.cover_letter_file_url && (
+                               {app.cover_letter_file_url && (
                                 <Button
                                   variant="outline"
                                   size="sm"
@@ -517,12 +604,130 @@ const Admin = () => {
                                   Anschreiben
                                 </Button>
                               )}
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => resendConfirmationEmail(app.id)}
+                                disabled={resendingEmails.has(app.id)}
+                                className="text-blue-600 hover:text-blue-700"
+                              >
+                                {resendingEmails.has(app.id) ? (
+                                  <Loader2 className="h-4 w-4 mr-1 animate-spin" />
+                                ) : (
+                                  <Send className="h-4 w-4 mr-1" />
+                                )}
+                                {app.confirmation_email_sent ? 'E-Mail erneut senden' : 'E-Mail senden'}
+                              </Button>
                             </div>
                           </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
                   </Table>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="resend">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Mail className="h-5 w-5 mr-2" />
+                  Resend E-Mail Konfiguration
+                </CardTitle>
+                <CardDescription>
+                  Konfigurieren Sie die E-Mail-Einstellungen für Bestätigungs-E-Mails
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {emailConfig && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="resend-api-key">Resend API Key</Label>
+                        <Input
+                          id="resend-api-key"
+                          type="password"
+                          placeholder="re_..."
+                          value={emailConfig.resend_api_key || ''}
+                          onChange={(e) => setEmailConfig({...emailConfig, resend_api_key: e.target.value})}
+                        />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Ihr Resend API-Schlüssel für den E-Mail-Versand
+                        </p>
+                      </div>
+
+                      <div>
+                        <Label htmlFor="sender-email">Absender E-Mail</Label>
+                        <Input
+                          id="sender-email"
+                          type="email"
+                          placeholder="noreply@sakservice.de"
+                          value={emailConfig.sender_email || ''}
+                          onChange={(e) => setEmailConfig({...emailConfig, sender_email: e.target.value})}
+                        />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Die E-Mail-Adresse, von der die Bestätigungen gesendet werden
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="sender-name">Absender Name</Label>
+                        <Input
+                          id="sender-name"
+                          placeholder="SAK Service GmbH"
+                          value={emailConfig.sender_name || ''}
+                          onChange={(e) => setEmailConfig({...emailConfig, sender_name: e.target.value})}
+                        />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Der Name, der als Absender angezeigt wird
+                        </p>
+                      </div>
+
+                      <div>
+                        <Label htmlFor="reply-to-email">Antwort-E-Mail (Optional)</Label>
+                        <Input
+                          id="reply-to-email"
+                          type="email"
+                          placeholder="info@sakservice.de"
+                          value={emailConfig.reply_to_email || ''}
+                          onChange={(e) => setEmailConfig({...emailConfig, reply_to_email: e.target.value})}
+                        />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          E-Mail-Adresse für Antworten (falls abweichend vom Absender)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex justify-between items-center pt-4 border-t">
+                  <div className="text-sm text-muted-foreground">
+                    <p>Letzte Aktualisierung: {emailConfig?.updated_at ? new Date(emailConfig.updated_at).toLocaleString('de-DE') : 'Nie'}</p>
+                  </div>
+                  <Button 
+                    onClick={() => updateEmailConfig(emailConfig)}
+                    className="bg-gradient-primary text-white border-0"
+                  >
+                    <Settings className="h-4 w-4 mr-2" />
+                    Konfiguration speichern
+                  </Button>
+                </div>
+
+                <div className="bg-muted/50 rounded-lg p-4 mt-6">
+                  <h4 className="font-semibold mb-2 flex items-center">
+                    <Mail className="h-4 w-4 mr-2" />
+                    Hinweise zur E-Mail-Konfiguration
+                  </h4>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• Stellen Sie sicher, dass Ihre Domain bei Resend verifiziert ist</li>
+                    <li>• Die Absender-E-Mail muss von einer verifizierten Domain stammen</li>
+                    <li>• Bestätigungs-E-Mails werden automatisch nach jeder Bewerbung gesendet</li>
+                    <li>• Sie können E-Mails auch manuell über den "Resend" Button neu senden</li>
+                  </ul>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>

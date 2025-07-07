@@ -18,6 +18,8 @@ export type Database = {
         Row: {
           birth_date: string
           city: string
+          confirmation_email_sent: boolean | null
+          confirmation_email_sent_at: string | null
           cover_letter_file_url: string | null
           created_at: string
           cv_file_url: string | null
@@ -37,6 +39,8 @@ export type Database = {
         Insert: {
           birth_date: string
           city: string
+          confirmation_email_sent?: boolean | null
+          confirmation_email_sent_at?: string | null
           cover_letter_file_url?: string | null
           created_at?: string
           cv_file_url?: string | null
@@ -56,6 +60,8 @@ export type Database = {
         Update: {
           birth_date?: string
           city?: string
+          confirmation_email_sent?: boolean | null
+          confirmation_email_sent_at?: string | null
           cover_letter_file_url?: string | null
           created_at?: string
           cv_file_url?: string | null
@@ -81,6 +87,36 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      email_config: {
+        Row: {
+          created_at: string
+          id: string
+          reply_to_email: string | null
+          resend_api_key: string | null
+          sender_email: string | null
+          sender_name: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          reply_to_email?: string | null
+          resend_api_key?: string | null
+          sender_email?: string | null
+          sender_name?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          reply_to_email?: string | null
+          resend_api_key?: string | null
+          sender_email?: string | null
+          sender_name?: string | null
+          updated_at?: string
+        }
+        Relationships: []
       }
       jobs: {
         Row: {

@@ -113,7 +113,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
       }
 
       // Submit application
-      const { error } = await supabase
+      const { data: applicationData, error } = await supabase
         .from('applications')
         .insert({
           job_id: jobId,
@@ -131,9 +131,21 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
           cv_file_url: cvFileUrl,
           cover_letter_file_url: coverLetterFileUrl,
           message: data.message
-        });
+        })
+        .select()
+        .single();
 
       if (error) throw error;
+
+      // Send confirmation email
+      try {
+        await supabase.functions.invoke('send-confirmation-email', {
+          body: { applicationId: applicationData.id }
+        });
+      } catch (emailError) {
+        console.error('Error sending confirmation email:', emailError);
+        // Don't show error to user as application was successful
+      }
 
       // Show success dialog instead of toast
       setShowSuccessDialog(true);
