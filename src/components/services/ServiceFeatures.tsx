@@ -16,7 +16,7 @@ const ServiceFeatures = () => {
     },
     {
       icon: Globe,
-      title: "15+ Sprachen",
+      title: "12+ Sprachen",
       description: "Muttersprachliche Agenten für internationale Märkte"
     },
     {

@@ -53,7 +53,7 @@ const PricingPlans = () => {
         "Unlimited Gespräche",
         "Dedicated Account Manager",
         "24/7 Premium Support",
-        "15+ Sprachen",
+        "12+ Sprachen",
         "Custom Integrations",
         "White-Label Lösung",
         "SLA Garantien",
