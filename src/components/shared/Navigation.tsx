@@ -91,7 +91,7 @@ const Navigation = () => {
                 </DropdownMenu>
               </div>
             ) : (
-              <Link to="/auth">
+              <Link to="/contact">
                 <Button size="sm" className="bg-gradient-primary text-white">
                   <Phone className="h-4 w-4 mr-2" />
                   Jetzt starten
@@ -156,7 +156,7 @@ const Navigation = () => {
                   </Button>
                 </div>
               ) : (
-                <Link to="/auth" onClick={closeMobileMenu}>
+                <Link to="/contact" onClick={closeMobileMenu}>
                   <Button className="bg-gradient-primary text-white w-full py-3 h-auto">
                     <Phone className="h-4 w-4 mr-2" />
                     Jetzt starten
