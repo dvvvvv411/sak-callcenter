@@ -1,10 +1,11 @@
-
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 const Navigation = () => {
   const location = useLocation();
+  useScrollToTop();
 
   const navItems = [
     { path: "/", label: "Home" },
