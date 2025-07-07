@@ -8,7 +8,10 @@ const corsHeaders = {
 };
 
 interface EmailRequest {
-  applicationId: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  jobTitle: string;
   useStoredKey?: boolean;
 }
 
@@ -24,29 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     );
 
-    const { applicationId, useStoredKey = false }: EmailRequest = await req.json();
-
-    // Get application details with job information
-    const { data: application, error: appError } = await supabaseClient
-      .from('applications')
-      .select(`
-        *,
-        jobs (
-          title,
-          location,
-          employment_type
-        )
-      `)
-      .eq('id', applicationId)
-      .single();
-
-    if (appError || !application) {
-      console.error('Error fetching application:', appError);
-      return new Response(
-        JSON.stringify({ error: 'Application not found' }),
-        { status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
+    const { email, firstName, lastName, jobTitle, useStoredKey = false }: EmailRequest = await req.json();
 
     // Get email configuration
     let resendApiKey = Deno.env.get('RESEND_API_KEY');
@@ -165,9 +146,9 @@ const handler = async (req: Request): Promise<Response> => {
                       <!-- Personal Greeting -->
                       <tr>
                         <td>
-                          <p style="color: #4a5568; margin: 0 0 25px 0; font-size: 16px; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
-                            Liebe/r ${application.first_name} ${application.last_name},
-                          </p>
+                           <p style="color: #4a5568; margin: 0 0 25px 0; font-size: 16px; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+                             Liebe/r ${firstName} ${lastName},
+                           </p>
                         </td>
                       </tr>
                       
@@ -192,10 +173,8 @@ const handler = async (req: Request): Promise<Response> => {
                                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                                   <tr>
                                     <td style="color: #4a5568; font-size: 15px; line-height: 1.8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
-                                      <p style="margin: 0 0 12px 0;"><strong style="color: #2d3748;">Position:</strong> ${application.jobs?.title || 'Allgemeine Bewerbung'}</p>
-                                      ${application.jobs?.location ? `<p style="margin: 0 0 12px 0;"><strong style="color: #2d3748;">Standort:</strong> ${application.jobs.location}</p>` : ''}
-                                      ${application.jobs?.employment_type ? `<p style="margin: 0 0 12px 0;"><strong style="color: #2d3748;">Beschäftigungsart:</strong> ${application.jobs.employment_type}</p>` : ''}
-                                      <p style="margin: 0;"><strong style="color: #2d3748;">Bewerbungsdatum:</strong> ${new Date(application.created_at).toLocaleDateString('de-DE')}</p>
+                                       <p style="margin: 0 0 12px 0;"><strong style="color: #2d3748;">Position:</strong> ${jobTitle}</p>
+                                       <p style="margin: 0;"><strong style="color: #2d3748;">Bewerbungsdatum:</strong> ${new Date().toLocaleDateString('de-DE')}</p>
                                     </td>
                                   </tr>
                                 </table>
@@ -271,8 +250,8 @@ const handler = async (req: Request): Promise<Response> => {
     // Send email
     const emailData: any = {
       from: `${senderName} <${senderEmail}>`,
-      to: [application.email],
-      subject: `Bewerbungsbestätigung - ${application.jobs?.title || 'Ihre Bewerbung'}`,
+      to: [email],
+      subject: `Bewerbungsbestätigung - ${jobTitle}`,
       html: emailHtml,
     };
 
@@ -289,15 +268,6 @@ const handler = async (req: Request): Promise<Response> => {
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
-
-    // Update application to mark email as sent
-    await supabaseClient
-      .from('applications')
-      .update({
-        confirmation_email_sent: true,
-        confirmation_email_sent_at: new Date().toISOString()
-      })
-      .eq('id', applicationId);
 
     console.log('Email sent successfully:', emailResponse);
 
