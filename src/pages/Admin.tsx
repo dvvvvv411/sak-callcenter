@@ -8,7 +8,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { useToast } from '@/hooks/use-toast';
-import { Users, Shield, Settings, BarChart3, Briefcase, FileText } from 'lucide-react';
+import { Users, Shield, Settings, BarChart3, Briefcase, FileText, Plus, Edit, Trash2 } from 'lucide-react';
+import { JobManagementDialog } from '@/components/admin/JobManagementDialog';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 interface Profile {
   id: string;
@@ -31,6 +33,8 @@ const Admin = () => {
   const [jobs, setJobs] = useState<any[]>([]);
   const [applications, setApplications] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [jobDialogOpen, setJobDialogOpen] = useState(false);
+  const [editingJob, setEditingJob] = useState<any>(null);
   const [stats, setStats] = useState({
     totalUsers: 0,
     totalAdmins: 0,
@@ -136,6 +140,41 @@ const Admin = () => {
         title: 'Fehler',
         description: 'Rolle konnte nicht aktualisiert werden.',
         variant: 'destructive'
+      });
+    }
+  };
+
+  const handleJobSuccess = () => {
+    fetchJobs();
+    setEditingJob(null);
+  };
+
+  const handleEditJob = (job: any) => {
+    setEditingJob(job);
+    setJobDialogOpen(true);
+  };
+
+  const handleDeleteJob = async (jobId: string) => {
+    try {
+      const { error } = await supabase
+        .from('jobs')
+        .delete()
+        .eq('id', jobId);
+
+      if (error) throw error;
+
+      toast({
+        title: 'Erfolgreich',
+        description: 'Stelle wurde gelöscht.',
+      });
+
+      fetchJobs();
+    } catch (error) {
+      console.error('Error deleting job:', error);
+      toast({
+        title: 'Fehler',
+        description: 'Stelle konnte nicht gelöscht werden.',
+        variant: 'destructive',
       });
     }
   };
@@ -292,8 +331,16 @@ const Admin = () => {
           <TabsContent value="jobs">
             <Card>
               <CardHeader>
-                <CardTitle>Stellenverwaltung</CardTitle>
-                <CardDescription>Verwalten Sie Stellenanzeigen</CardDescription>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <CardTitle>Stellenverwaltung</CardTitle>
+                    <CardDescription>Verwalten Sie Stellenanzeigen</CardDescription>
+                  </div>
+                  <Button onClick={() => setJobDialogOpen(true)} className="bg-gradient-primary text-white border-0">
+                    <Plus className="h-4 w-4 mr-2" />
+                    Neue Stelle
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <Table>
@@ -316,7 +363,42 @@ const Admin = () => {
                         </TableCell>
                         <TableCell>{new Date(job.created_at).toLocaleDateString('de-DE')}</TableCell>
                         <TableCell>
-                          <Button variant="outline" size="sm">Bearbeiten</Button>
+                          <div className="flex space-x-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => handleEditJob(job)}
+                            >
+                              <Edit className="h-4 w-4 mr-1" />
+                              Bearbeiten
+                            </Button>
+                            <AlertDialog>
+                              <AlertDialogTrigger asChild>
+                                <Button variant="outline" size="sm" className="text-destructive hover:text-destructive">
+                                  <Trash2 className="h-4 w-4 mr-1" />
+                                  Löschen
+                                </Button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>Stelle löschen</AlertDialogTitle>
+                                  <AlertDialogDescription>
+                                    Sind Sie sicher, dass Sie diese Stelle löschen möchten? 
+                                    Diese Aktion kann nicht rückgängig gemacht werden.
+                                  </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Abbrechen</AlertDialogCancel>
+                                  <AlertDialogAction 
+                                    onClick={() => handleDeleteJob(job.id)}
+                                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                  >
+                                    Löschen
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          </div>
                         </TableCell>
                       </TableRow>
                     ))}
@@ -368,6 +450,17 @@ const Admin = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Job Management Dialog */}
+      <JobManagementDialog
+        open={jobDialogOpen}
+        onOpenChange={(open) => {
+          setJobDialogOpen(open);
+          if (!open) setEditingJob(null);
+        }}
+        job={editingJob}
+        onSuccess={handleJobSuccess}
+      />
     </div>
   );
 };
