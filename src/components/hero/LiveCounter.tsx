@@ -4,14 +4,14 @@ import { Phone, TrendingUp } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const LiveCounter = () => {
-  const [activeCallsCount, setActiveCallsCount] = useState(247);
+  const [activeCallsCount, setActiveCallsCount] = useState(52);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveCallsCount(prev => {
         const change = Math.floor(Math.random() * 6) - 2; // -2 to +3
         const newCount = prev + change;
-        return Math.max(200, Math.min(300, newCount)); // Keep between 200-300
+        return Math.max(40, Math.min(60, newCount)); // Keep between 40-60
       });
     }, 3000);
 
