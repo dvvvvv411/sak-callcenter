@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check, Star, Zap, Crown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PricingPlans = () => {
   const plans = [
@@ -119,16 +120,18 @@ const PricingPlans = () => {
                   ))}
                 </ul>
                 
-                <Button 
-                  className={`w-full ${
-                    plan.popular 
-                      ? 'bg-gradient-primary text-white' 
-                      : 'bg-background border border-primary text-primary hover:bg-primary hover:text-white'
-                  } hover:scale-105 transition-all duration-300`}
-                  size="lg"
-                >
-                  {plan.name} wählen
-                </Button>
+                <Link to="/contact">
+                  <Button 
+                    className={`w-full ${
+                      plan.popular 
+                        ? 'bg-gradient-primary text-white' 
+                        : 'bg-background border border-primary text-primary hover:bg-primary hover:text-white'
+                    } hover:scale-105 transition-all duration-300`}
+                    size="lg"
+                  >
+                    {plan.name} wählen
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
