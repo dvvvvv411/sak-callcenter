@@ -142,7 +142,8 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
             email: data.email,
             firstName: data.firstName,
             lastName: data.lastName,
-            jobTitle: jobTitle
+            jobTitle: jobTitle,
+            useStoredKey: true
           }
         });
       } catch (emailError) {
