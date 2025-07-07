@@ -29,6 +29,12 @@ const JobDetail = () => {
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
+  const formatBulletPoints = (text: string) => {
+    return text.split('\n').filter(line => line.trim()).map((line, index) => (
+      <li key={index} className="text-muted-foreground leading-relaxed">{line.trim()}</li>
+    ));
+  };
+
   useEffect(() => {
     if (id) {
       fetchJob();
@@ -101,7 +107,7 @@ const JobDetail = () => {
       
       <Navigation />
       
-      <div className="container mx-auto px-6 py-24 relative z-10">
+      <div className="container mx-auto px-6 py-32 relative z-10">
         {/* Job Header */}
         <div className="max-w-6xl mx-auto mb-12">
           <div className="text-center mb-8">
@@ -233,7 +239,9 @@ const JobDetail = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="relative z-10">
-                  <p className="whitespace-pre-wrap text-muted-foreground leading-relaxed">{job.qualifications}</p>
+                  <ul className="list-disc list-inside space-y-2">
+                    {formatBulletPoints(job.qualifications)}
+                  </ul>
                 </CardContent>
               </Card>
             )}
@@ -250,7 +258,9 @@ const JobDetail = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="relative z-10">
-                  <p className="whitespace-pre-wrap text-muted-foreground leading-relaxed">{job.responsibilities}</p>
+                  <ul className="list-disc list-inside space-y-2">
+                    {formatBulletPoints(job.responsibilities)}
+                  </ul>
                 </CardContent>
               </Card>
             )}
@@ -267,7 +277,9 @@ const JobDetail = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="relative z-10">
-                  <p className="whitespace-pre-wrap text-muted-foreground leading-relaxed">{job.benefits}</p>
+                  <ul className="list-disc list-inside space-y-2">
+                    {formatBulletPoints(job.benefits)}
+                  </ul>
                 </CardContent>
               </Card>
             )}
