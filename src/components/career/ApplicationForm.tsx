@@ -166,14 +166,20 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
   };
 
   return (
-    <Card className="sticky top-6">
-      <CardHeader>
-        <CardTitle>Jetzt bewerben</CardTitle>
-        <CardDescription>
+    <Card className="bg-gradient-glass backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl hover:shadow-electric-blue/10 transition-all duration-500 animate-fade-in">
+      <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
+      <CardHeader className="relative z-10">
+        <CardTitle className="text-xl text-primary flex items-center">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neon-green/20 to-neon-green/10 flex items-center justify-center mr-3">
+            <Upload className="h-4 w-4 text-neon-green" />
+          </div>
+          Jetzt bewerben
+        </CardTitle>
+        <CardDescription className="text-muted-foreground">
           Bewerben Sie sich für die Position: {jobTitle}
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="relative z-10">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             {/* Personal Info */}
@@ -358,14 +364,19 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
             </div>
 
             {/* File Uploads */}
-            <div className="space-y-4">
-              <div>
-                <FormLabel>Lebenslauf (PDF/Word)</FormLabel>
-                <div className="mt-2">
-                  <label className="flex items-center justify-center w-full h-12 border-2 border-dashed border-border rounded-md cursor-pointer hover:bg-muted/50">
-                    <Upload className="h-4 w-4 mr-2" />
-                    <span className="text-sm">
-                      {cvFile ? cvFile.name : 'Lebenslauf hochladen'}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card className="group bg-gradient-glass backdrop-blur-sm border border-white/20 hover:border-electric-blue/40 transition-all duration-300">
+                <CardContent className="p-4">
+                  <FormLabel className="text-primary group-hover:text-electric-blue transition-colors duration-300 flex items-center mb-3">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-electric-blue/20 to-electric-blue/10 flex items-center justify-center mr-2">
+                      <Upload className="h-3 w-3 text-electric-blue" />
+                    </div>
+                    Lebenslauf (erforderlich)
+                  </FormLabel>
+                  <label className="flex items-center justify-center w-full h-12 border-2 border-dashed border-border rounded-md cursor-pointer hover:bg-muted/50 transition-colors duration-300">
+                    <Upload className="h-4 w-4 mr-2 text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">
+                      {cvFile ? cvFile.name : 'PDF/Word hochladen'}
                     </span>
                     <input
                       type="file"
@@ -374,16 +385,21 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                       className="hidden"
                     />
                   </label>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
 
-              <div>
-                <FormLabel>Anschreiben (PDF/Word)</FormLabel>
-                <div className="mt-2">
-                  <label className="flex items-center justify-center w-full h-12 border-2 border-dashed border-border rounded-md cursor-pointer hover:bg-muted/50">
-                    <Upload className="h-4 w-4 mr-2" />
-                    <span className="text-sm">
-                      {coverLetterFile ? coverLetterFile.name : 'Anschreiben hochladen'}
+              <Card className="group bg-gradient-glass backdrop-blur-sm border border-white/20 hover:border-neon-green/40 transition-all duration-300">
+                <CardContent className="p-4">
+                  <FormLabel className="text-primary group-hover:text-neon-green transition-colors duration-300 flex items-center mb-3">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-neon-green/20 to-neon-green/10 flex items-center justify-center mr-2">
+                      <Upload className="h-3 w-3 text-neon-green" />
+                    </div>
+                    Anschreiben (optional)
+                  </FormLabel>
+                  <label className="flex items-center justify-center w-full h-12 border-2 border-dashed border-border rounded-md cursor-pointer hover:bg-muted/50 transition-colors duration-300">
+                    <Upload className="h-4 w-4 mr-2 text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">
+                      {coverLetterFile ? coverLetterFile.name : 'PDF/Word hochladen'}
                     </span>
                     <input
                       type="file"
@@ -392,8 +408,8 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
                       className="hidden"
                     />
                   </label>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Message */}
@@ -417,7 +433,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
 
             <Button 
               type="submit" 
-              className="w-full" 
+              className="w-full bg-gradient-primary hover:scale-105 transition-all duration-300 text-white border-0 shadow-lg hover:shadow-xl" 
               disabled={isSubmitting}
             >
               {isSubmitting ? (

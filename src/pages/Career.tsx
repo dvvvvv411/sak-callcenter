@@ -4,7 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, MapPin, DollarSign, Briefcase, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, DollarSign, Briefcase, ChevronRight, Clock, Home, GraduationCap, Shield } from 'lucide-react';
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import { useToast } from '@/hooks/use-toast';
@@ -52,15 +52,21 @@ const Career = () => {
   };
 
   const benefits = [
-    'Flexible Arbeitszeiten',
-    'Homeoffice-Möglichkeiten',
-    'Weiterbildungsmöglichkeiten',
-    'Betriebliche Altersvorsorge',
-    'Gesundheitsförderung',
-    'Teamevents',
-    'Modernes Arbeitsumfeld',
-    'Firmenwagen'
+    { text: 'Flexible Arbeitszeiten', icon: 'Clock' },
+    { text: 'Homeoffice-Möglichkeiten', icon: 'Home' },
+    { text: 'Weiterbildungsmöglichkeiten', icon: 'GraduationCap' },
+    { text: 'Betriebliche Altersvorsorge', icon: 'Shield' }
   ];
+
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Clock': return Clock;
+      case 'Home': return Home;
+      case 'GraduationCap': return GraduationCap;
+      case 'Shield': return Shield;
+      default: return Briefcase;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -87,25 +93,9 @@ const Career = () => {
           </p>
         </div>
 
-        {/* Benefits Section */}
+        {/* Jobs Section */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-primary mb-8 text-center animate-fade-in" style={{animationDelay: '0.3s'}}>
-            Unsere <span className="bg-gradient-secondary bg-clip-text text-transparent">Vorteile</span>
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="group text-center hover:scale-105 transition-all duration-300 bg-gradient-glass backdrop-blur-xl border border-white/20 hover:border-neon-green/40 shadow-lg hover:shadow-xl animate-fade-in" style={{animationDelay: `${0.4 + index * 0.1}s`}}>
-                <CardContent className="p-4">
-                  <p className="font-medium text-primary group-hover:text-neon-green transition-colors duration-300">{benefit}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Jobs Section */}
-        <div>
-          <h2 className="text-3xl font-bold text-primary mb-8 text-center animate-fade-in" style={{animationDelay: '0.8s'}}>
             Offene <span className="bg-gradient-primary bg-clip-text text-transparent">Positionen</span>
           </h2>
           
@@ -128,7 +118,7 @@ const Career = () => {
           ) : (
             <div className="grid gap-6 max-w-4xl mx-auto">
               {jobs.map((job, index) => (
-                <Card key={job.id} className="group hover:scale-[1.02] transition-all duration-500 bg-gradient-glass backdrop-blur-xl border border-white/20 hover:border-electric-blue/40 shadow-xl hover:shadow-2xl hover:shadow-electric-blue/10 animate-fade-in overflow-hidden" style={{animationDelay: `${0.9 + index * 0.1}s`}}>
+                <Card key={job.id} className="group hover:scale-[1.02] transition-all duration-500 bg-gradient-glass backdrop-blur-xl border border-white/20 hover:border-electric-blue/40 shadow-xl hover:shadow-2xl hover:shadow-electric-blue/10 animate-fade-in overflow-hidden" style={{animationDelay: `${0.4 + index * 0.1}s`}}>
                   {/* Card glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
@@ -191,6 +181,28 @@ const Career = () => {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Benefits Section */}
+        <div>
+          <h2 className="text-3xl font-bold text-primary mb-8 text-center animate-fade-in" style={{animationDelay: '0.8s'}}>
+            Unsere <span className="bg-gradient-secondary bg-clip-text text-transparent">Vorteile</span>
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {benefits.map((benefit, index) => {
+              const IconComponent = getIcon(benefit.icon);
+              return (
+                <Card key={index} className="group text-center hover:scale-105 transition-all duration-300 bg-gradient-glass backdrop-blur-xl border border-white/20 hover:border-neon-green/40 shadow-lg hover:shadow-xl animate-fade-in" style={{animationDelay: `${0.9 + index * 0.1}s`}}>
+                  <CardContent className="p-4 flex flex-col items-center">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-neon-green/20 to-neon-green/10 flex items-center justify-center mb-3">
+                      <IconComponent className="h-5 w-5 text-neon-green" />
+                    </div>
+                    <p className="font-medium text-primary group-hover:text-neon-green transition-colors duration-300">{benefit.text}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
       </div>
 
