@@ -453,16 +453,18 @@ const Admin = () => {
                 <CardDescription>Übersicht aller eingegangenen Bewerbungen</CardDescription>
               </CardHeader>
               <CardContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Datum & Uhrzeit</TableHead>
-                        <TableHead>Name</TableHead>
-                        <TableHead>E-Mail</TableHead>
-                        <TableHead>Stelle</TableHead>
-                        <TableHead>Aktionen</TableHead>
-                      </TableRow>
-                    </TableHeader>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Datum & Uhrzeit</TableHead>
+                          <TableHead>Name</TableHead>
+                          <TableHead>E-Mail</TableHead>
+                          <TableHead>Adresse</TableHead>
+                          <TableHead>Fremdsprachen</TableHead>
+                          <TableHead>Stelle</TableHead>
+                          <TableHead>Aktionen</TableHead>
+                        </TableRow>
+                      </TableHeader>
                     <TableBody>
                       {applications.map((app) => (
                         <TableRow key={app.id}>
@@ -473,6 +475,13 @@ const Admin = () => {
                             {app.first_name} {app.last_name}
                           </TableCell>
                           <TableCell>{app.email}</TableCell>
+                          <TableCell className="text-sm">
+                            <div>{app.street_address}</div>
+                            <div>{app.postal_code} {app.city}</div>
+                          </TableCell>
+                          <TableCell className="text-sm">
+                            {app.languages?.length > 0 ? app.languages.join(', ') : '-'}
+                          </TableCell>
                           <TableCell>
                             <Badge variant="secondary">
                               {app.jobs?.title || 'Unbekannt'}
