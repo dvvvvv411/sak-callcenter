@@ -392,7 +392,7 @@ const Index = () => {
                 <img 
                   src="https://i.imgur.com/CIi9DJl.png" 
                   alt="MultiCall Pro Logo" 
-                  className="h-10 w-auto"
+                  className="h-20 w-auto"
                 />
               </div>
               <p className="text-muted-foreground mb-6 max-w-md">

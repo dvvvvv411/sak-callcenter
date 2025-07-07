@@ -21,7 +21,7 @@ const Navigation = () => {
             <img 
               src="https://i.imgur.com/CIi9DJl.png" 
               alt="MultiCall Pro Logo" 
-              className="h-10 w-auto"
+              className="h-20 w-auto"
             />
           </Link>
           <div className="flex items-center space-x-6">
