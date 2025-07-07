@@ -45,6 +45,10 @@ const Admin = () => {
   });
 
   useEffect(() => {
+    document.title = "Admin Dashboard - SAK Service GmbH";
+  }, []);
+
+  useEffect(() => {
     fetchProfiles();
     fetchJobs();
     fetchApplications();

@@ -2,8 +2,13 @@ import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useEffect } from "react";
 
 const Impressum = () => {
+  useEffect(() => {
+    document.title = "Impressum - SAK Service GmbH";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />

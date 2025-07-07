@@ -5,8 +5,13 @@ import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRig
 import HeroSection from "@/components/hero/HeroSection";
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "SAK Service GmbH - Professionelle Callcenter Services";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}

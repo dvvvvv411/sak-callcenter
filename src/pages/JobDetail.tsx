@@ -29,6 +29,10 @@ const JobDetail = () => {
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
+  useEffect(() => {
+    document.title = job ? `${job.title} - Karriere - SAK Service GmbH` : "Job Details - SAK Service GmbH";
+  }, [job]);
+
   const formatBulletPoints = (text: string) => {
     return text.split('\n').filter(line => line.trim()).map((line, index) => (
       <li key={index} className="text-muted-foreground leading-relaxed">{line.trim()}</li>

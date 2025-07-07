@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,10 @@ import { useToast } from '@/hooks/use-toast';
 import { Eye, EyeOff, Lock, Mail, User } from 'lucide-react';
 
 const Auth = () => {
+  useEffect(() => {
+    document.title = "Anmelden - SAK Service GmbH";
+  }, []);
+
   const { user, signIn, signUp, loading } = useAuth();
   const { toast } = useToast();
   const [showPassword, setShowPassword] = useState(false);

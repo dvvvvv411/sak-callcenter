@@ -21,6 +21,10 @@ interface Job {
 }
 
 const Career = () => {
+  useEffect(() => {
+    document.title = "Karriere - SAK Service GmbH";
+  }, []);
+
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();

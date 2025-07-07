@@ -5,6 +5,10 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Seite nicht gefunden - SAK Service GmbH";
+  }, []);
+
+  useEffect(() => {
     console.error(
       "404 Error: User attempted to access non-existent route:",
       location.pathname

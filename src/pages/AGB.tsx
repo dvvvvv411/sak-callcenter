@@ -3,8 +3,13 @@ import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, CheckCircle, AlertCircle, Scale } from "lucide-react";
+import { useEffect } from "react";
 
 const AGB = () => {
+  useEffect(() => {
+    document.title = "AGB - SAK Service GmbH";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
