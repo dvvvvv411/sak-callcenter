@@ -29,7 +29,7 @@ const Navigation = () => {
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center md:justify-start justify-center flex-1 md:flex-none" onClick={closeMobileMenu}>
+          <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
             <img 
               src="https://i.imgur.com/CIi9DJl.png" 
               alt="SAK Logo" 
@@ -63,7 +63,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors absolute right-6"
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
             aria-label="Menu öffnen"
           >
             {isMobileMenuOpen ? (
