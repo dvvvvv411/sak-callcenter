@@ -17,7 +17,7 @@ const ContactInfo = () => {
       icon: Mail,
       title: "E-Mail",
       description: "Schreiben Sie uns Ihre Anfrage",
-      contact: "hello@callcenter-pro.de",
+      contact: "info@sak-callcenter.de",
       action: "E-Mail senden",
       available: "24/7 verfügbar"
     },

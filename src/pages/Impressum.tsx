@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -55,7 +54,7 @@ const Impressum = () => {
                 <CardTitle className="text-2xl text-primary">Geschäftsführung</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Max Mustermann</p>
+                <p className="text-muted-foreground">Kai Uwe Müller</p>
               </CardContent>
             </Card>
 
@@ -89,7 +88,7 @@ const Impressum = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Max Mustermann<br />
+                  Kai Uwe Müller<br />
                   Buchkremerstr. 6<br />
                   52062 Aachen
                 </p>

@@ -12,7 +12,7 @@ const Navigation = () => {
     { path: "/", label: "Home" },
     { path: "/services", label: "Services" },
     { path: "/pricing", label: "Preise" },
-    { path: "/contact", label: "Contact" }
+    { path: "/contact", label: "Kontakt" }
   ];
 
   return (
@@ -43,7 +43,7 @@ const Navigation = () => {
             <Link to="/contact">
               <Button size="sm" className="bg-gradient-primary text-white">
                 <Phone className="h-4 w-4 mr-2" />
-                Get Started
+                Jetzt starten
               </Button>
             </Link>
           </div>

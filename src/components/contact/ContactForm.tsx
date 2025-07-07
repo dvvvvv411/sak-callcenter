@@ -56,7 +56,7 @@ const ContactForm = () => {
                   <Input
                     value={formData.firstName}
                     onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                    placeholder="Max"
+                    placeholder="Ihr Vorname"
                     required
                   />
                 </div>
@@ -65,7 +65,7 @@ const ContactForm = () => {
                   <Input
                     value={formData.lastName}
                     onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                    placeholder="Mustermann"
+                    placeholder="Ihr Nachname"
                     required
                   />
                 </div>
