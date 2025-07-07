@@ -1,5 +1,6 @@
 
 import Navigation from "@/components/shared/Navigation";
+import Footer from "@/components/shared/Footer";
 import ServiceHero from "@/components/services/ServiceHero";
 import ServiceCategories from "@/components/services/ServiceCategories";
 import ServiceFeatures from "@/components/services/ServiceFeatures";
@@ -13,6 +14,7 @@ const Services = () => {
       <ServiceCategories />
       <ServiceFeatures />
       <ServiceCTA />
+      <Footer />
     </div>
   );
 };

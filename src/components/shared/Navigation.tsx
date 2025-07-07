@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -21,7 +22,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center">
             <img 
               src="https://i.imgur.com/CIi9DJl.png" 
-              alt="MultiCall Pro Logo" 
+              alt="SAK Logo" 
               className="h-20 w-auto"
             />
           </Link>

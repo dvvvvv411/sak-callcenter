@@ -1,5 +1,6 @@
 
 import Navigation from "@/components/shared/Navigation";
+import Footer from "@/components/shared/Footer";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
@@ -15,6 +16,7 @@ const Contact = () => {
         <ContactInfo />
       </div>
       <ContactCTA />
+      <Footer />
     </div>
   );
 };

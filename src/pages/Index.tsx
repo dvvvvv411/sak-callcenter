@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight, TrendingUp, BarChart3, Target, Zap, Rocket, Globe, Shield } from "lucide-react";
 import HeroSection from "@/components/hero/HeroSection";
 import Navigation from "@/components/shared/Navigation";
+import Footer from "@/components/shared/Footer";
 
 const Index = () => {
   return (
@@ -519,55 +520,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary/5 border-t border-white/10 py-16 px-6">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div className="col-span-2">
-              <div className="flex items-center space-x-3 mb-6">
-                <img 
-                  src="https://i.imgur.com/CIi9DJl.png" 
-                  alt="MultiCall Pro Logo" 
-                  className="h-20 w-auto"
-                />
-              </div>
-              <p className="text-muted-foreground mb-6 max-w-md">
-                Professionelle mehrsprachige Kundenbetreuung. 
-                Bewährt seit 7 Jahren, global verfügbar, lokal kompetent.
-              </p>
-              <div className="flex space-x-4">
-                <Button size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-                  <Phone className="h-4 w-4 mr-2" />
-                  +49 (0) 800 123 4567
-                </Button>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-primary">Services</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Professionelles Call Center</li>
-                <li>Mehrsprachiger Support</li>
-                <li>Erweiterte Servicezeiten</li>
-                <li>Detaillierte Berichte</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-primary">Unternehmen</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Über uns</li>
-                <li>Karriere</li>
-                <li>Partner</li>
-                <li>Presse</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 MultiCall Pro. Seit 7 Jahren Ihr Partner für professionelle Kundenbetreuung.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 
 import Navigation from "@/components/shared/Navigation";
+import Footer from "@/components/shared/Footer";
 import PricingHero from "@/components/pricing/PricingHero";
 import PricingPlans from "@/components/pricing/PricingPlans";
 import PricingComparison from "@/components/pricing/PricingComparison";
@@ -15,6 +16,7 @@ const Pricing = () => {
       <PricingComparison />
       <PricingFAQ />
       <PricingCTA />
+      <Footer />
     </div>
   );
 };
