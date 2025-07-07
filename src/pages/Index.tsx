@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight, TrendingUp, BarChart3, Target, Zap } from "lucide-react";
+import { Phone, Mail, Clock, Users, Headphones, Check, Star, ArrowUp, ChevronRight, TrendingUp, BarChart3, Target, Zap, Rocket, Globe, Shield } from "lucide-react";
 import HeroSection from "@/components/hero/HeroSection";
 import Navigation from "@/components/shared/Navigation";
 
@@ -346,39 +346,174 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Enhanced CTA Section */}
       <section className="py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 via-transparent to-neon-green/10"></div>
-        <div className="container mx-auto text-center max-w-4xl relative z-10">
-          <h2 className="text-6xl font-bold mb-8 text-primary">
-            Bereit für die Zukunft?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Profitieren Sie von unserer 7-jährigen Erfahrung und erweitern Sie 
-            Ihre Reichweite mit professioneller mehrsprachiger Kundenbetreuung.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-            <Button size="lg" className="text-lg px-12 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white border-0 animate-glow">
-              <Phone className="h-6 w-6 mr-3" />
-              Jetzt kostenlos starten
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-12 py-6 border-primary/30 text-primary hover:bg-primary/5 backdrop-blur-sm">
-              <Mail className="h-6 w-6 mr-3" />
-              Beratungstermin buchen
-            </Button>
+        {/* Enhanced Background with Multiple Layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 via-primary/5 to-neon-green/10"></div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-neon-green/5 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-gradient-to-r from-electric-blue/3 to-neon-green/3 rounded-full blur-2xl opacity-40 animate-pulse"></div>
+        
+        {/* Geometric Decorations */}
+        <div className="absolute top-10 right-1/4 w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
+        <div className="absolute bottom-10 left-1/3 w-3 h-3 bg-electric-blue/50 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/3 right-10 w-1 h-20 bg-gradient-primary opacity-20 rotate-45"></div>
+        
+        <div className="container mx-auto max-w-6xl relative z-10">
+          {/* Enhanced Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-glass backdrop-blur-sm border border-white/20 text-sm font-medium text-primary mb-6 animate-fade-in shadow-lg">
+              <Rocket className="h-4 w-4 mr-2 text-neon-green animate-pulse" />
+              Die Zukunft beginnt jetzt
+              <Globe className="h-4 w-4 ml-2 text-electric-blue" />
+            </div>
+            
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6 text-primary leading-tight animate-fade-in" style={{animationDelay: '0.1s'}}>
+              Bereit für die
+              <span className="block bg-gradient-primary bg-clip-text text-transparent mt-2">
+                Zukunft?
+              </span>
+            </h2>
+            
+            <div className="max-w-4xl mx-auto">
+              <p className="text-xl lg:text-2xl text-muted-foreground mb-6 leading-relaxed animate-fade-in" style={{animationDelay: '0.2s'}}>
+                Profitieren Sie von unserer 7-jährigen Erfahrung und erweitern Sie 
+                Ihre Reichweite mit professioneller mehrsprachiger Kundenbetreuung.
+              </p>
+              <div className="flex items-center justify-center space-x-3 animate-fade-in" style={{animationDelay: '0.3s'}}>
+                <div className="w-12 h-1 bg-gradient-primary rounded-full"></div>
+                <Zap className="h-6 w-6 text-primary animate-pulse" />
+                <div className="w-12 h-1 bg-gradient-primary rounded-full"></div>
+              </div>
+            </div>
           </div>
 
-          <div className="flex justify-center items-center space-x-8 opacity-70">
-            <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm">
-              ISO 27001
-            </Badge>
-            <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm">
-              GDPR Konform
-            </Badge>
-            <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm">
-              SOC 2 Type II
-            </Badge>
+          {/* Enhanced Feature Cards Grid */}
+          <div className="grid lg:grid-cols-3 gap-6 mb-16">
+            {/* Feature Card 1 */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-2xl blur-xl transition-all duration-500"></div>
+              <Card className="relative bg-gradient-glass backdrop-blur-xl rounded-2xl border border-white/20 hover:border-neon-green/40 hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl animate-fade-in overflow-hidden" style={{animationDelay: '0.4s'}}>
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <CardHeader className="text-center pb-4 relative z-10">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-neon-green/20 to-neon-green/10 rounded-2xl flex items-center justify-center group-hover:animate-glow shadow-lg transform group-hover:rotate-3 transition-transform duration-500">
+                    <Rocket className="h-8 w-8 text-neon-green" />
+                  </div>
+                  <CardTitle className="text-xl mb-3 text-primary font-bold">Sofortiger Start</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground leading-relaxed">
+                    Keine Wartezeiten - beginnen Sie noch heute
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative z-10 text-center">
+                  <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
+                    Kostenlos
+                  </div>
+                  <p className="text-xs text-muted-foreground">Erste 30 Tage</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Feature Card 2 */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-secondary opacity-0 group-hover:opacity-10 rounded-2xl blur-xl transition-all duration-500"></div>
+              <Card className="relative bg-gradient-glass backdrop-blur-xl rounded-2xl border border-white/20 hover:border-electric-blue/40 hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl animate-fade-in overflow-hidden" style={{animationDelay: '0.5s'}}>
+                <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <CardHeader className="text-center pb-4 relative z-10">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-electric-blue/20 to-electric-blue/10 rounded-2xl flex items-center justify-center group-hover:animate-glow shadow-lg transform group-hover:rotate-3 transition-transform duration-500">
+                    <Globe className="h-8 w-8 text-electric-blue" />
+                  </div>
+                  <CardTitle className="text-xl mb-3 text-primary font-bold">Global verfügbar</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground leading-relaxed">
+                    Weltweite Expansion ohne Grenzen
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative z-10 text-center">
+                  <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
+                    45+ Länder
+                  </div>
+                  <p className="text-xs text-muted-foreground">12 Sprachen</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Feature Card 3 */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-2xl blur-xl transition-all duration-500"></div>
+              <Card className="relative bg-gradient-glass backdrop-blur-xl rounded-2xl border border-white/20 hover:border-neon-green/40 hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-2xl animate-fade-in overflow-hidden" style={{animationDelay: '0.6s'}}>
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-green/5 to-electric-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <CardHeader className="text-center pb-4 relative z-10">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-neon-green/20 to-electric-blue/10 rounded-2xl flex items-center justify-center group-hover:animate-glow shadow-lg transform group-hover:rotate-3 transition-transform duration-500">
+                    <Shield className="h-8 w-8 text-neon-green" />
+                  </div>
+                  <CardTitle className="text-xl mb-3 text-primary font-bold">100% sicher</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground leading-relaxed">
+                    Höchste Sicherheitsstandards garantiert
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="relative z-10 text-center">
+                  <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
+                    ISO 27001
+                  </div>
+                  <p className="text-xs text-muted-foreground">Zertifiziert</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+          
+          {/* Enhanced CTA Buttons */}
+          <div className="text-center mb-12 animate-fade-in" style={{animationDelay: '0.7s'}}>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+              <Button size="lg" className="text-xl px-16 py-8 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-electric-blue/20 text-white border-0 animate-glow group">
+                <Rocket className="h-6 w-6 mr-3 group-hover:animate-pulse" />
+                Jetzt kostenlos starten
+                <ChevronRight className="h-6 w-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+              <Button variant="outline" size="lg" className="text-xl px-16 py-8 border-primary/30 text-primary hover:bg-primary/5 backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-xl group">
+                <Mail className="h-6 w-6 mr-3 group-hover:animate-pulse" />
+                Beratungstermin buchen
+                <ChevronRight className="h-6 w-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </div>
+            
+            {/* Trust indicators with animations */}
+            <div className="flex justify-center items-center space-x-8 opacity-80 animate-fade-in" style={{animationDelay: '0.8s'}}>
+              <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm hover:scale-105 transition-transform duration-300 shadow-lg">
+                <Shield className="h-3 w-3 mr-1 text-neon-green" />
+                ISO 27001
+              </Badge>
+              <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm hover:scale-105 transition-transform duration-300 shadow-lg">
+                <Check className="h-3 w-3 mr-1 text-neon-green" />
+                GDPR Konform
+              </Badge>
+              <Badge variant="outline" className="bg-gradient-glass border-white/20 backdrop-blur-sm hover:scale-105 transition-transform duration-300 shadow-lg">
+                <Star className="h-3 w-3 mr-1 text-neon-green" />
+                SOC 2 Type II
+              </Badge>
+            </div>
+          </div>
+
+          {/* Enhanced Bottom Stats */}
+          <div className="text-center animate-fade-in" style={{animationDelay: '0.9s'}}>
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-neon-green/10 to-electric-blue/10 backdrop-blur-sm border border-white/20 text-sm font-medium text-primary mb-6 shadow-lg">
+              <TrendingUp className="h-4 w-4 mr-2 text-neon-green animate-pulse" />
+              Über 500 zufriedene Kunden vertrauen bereits auf uns
+              <Users className="h-4 w-4 ml-2 text-electric-blue" />
+            </div>
+            
+            <div className="flex items-center justify-center space-x-8 opacity-70">
+              <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse"></div>
+                <span>Live Support</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <div className="w-3 h-3 bg-electric-blue rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                <span>24/7 Verfügbar</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <div className="w-3 h-3 bg-gradient-primary rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                <span>Sofortiger Start</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
