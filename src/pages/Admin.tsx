@@ -459,9 +459,9 @@ const Admin = () => {
                           <TableHead>Datum & Uhrzeit</TableHead>
                           <TableHead>Name</TableHead>
                           <TableHead>E-Mail</TableHead>
+                          <TableHead>Telefonnummer</TableHead>
                           <TableHead>Adresse</TableHead>
                           <TableHead>Fremdsprachen</TableHead>
-                          <TableHead>Stelle</TableHead>
                           <TableHead>Aktionen</TableHead>
                         </TableRow>
                       </TableHeader>
@@ -469,23 +469,19 @@ const Admin = () => {
                       {applications.map((app) => (
                         <TableRow key={app.id}>
                           <TableCell>
-                            {new Date(app.created_at).toLocaleString('de-DE')}
+                            {new Date(app.created_at).toLocaleDateString('de-DE')} {new Date(app.created_at).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
                           </TableCell>
                           <TableCell className="font-medium">
                             {app.first_name} {app.last_name}
                           </TableCell>
                           <TableCell>{app.email}</TableCell>
+                          <TableCell>{app.phone}</TableCell>
                           <TableCell className="text-sm">
                             <div>{app.street_address}</div>
                             <div>{app.postal_code} {app.city}</div>
                           </TableCell>
                           <TableCell className="text-sm">
                             {app.languages?.length > 0 ? app.languages.join(', ') : '-'}
-                          </TableCell>
-                          <TableCell>
-                            <Badge variant="secondary">
-                              {app.jobs?.title || 'Unbekannt'}
-                            </Badge>
                           </TableCell>
                           <TableCell>
                             <div className="flex space-x-2">
