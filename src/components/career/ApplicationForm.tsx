@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { Upload, Loader2 } from 'lucide-react';
+import { ApplicationSuccessDialog } from '@/components/ui/application-success-dialog';
 
 const languages = [
   'Deutsch',
@@ -62,6 +63,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [coverLetterFile, setCoverLetterFile] = useState<File | null>(null);
   const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<ApplicationFormData>({
@@ -133,10 +135,8 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
 
       if (error) throw error;
 
-      toast({
-        title: 'Bewerbung gesendet!',
-        description: 'Ihre Bewerbung wurde erfolgreich übermittelt. Wir melden uns bald bei Ihnen.'
-      });
+      // Show success dialog instead of toast
+      setShowSuccessDialog(true);
 
       // Reset form
       form.reset();
@@ -166,19 +166,26 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
   };
 
   return (
-    <Card className="bg-gradient-glass backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl hover:shadow-electric-blue/10 transition-all duration-500 animate-fade-in">
-      <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
-      <CardHeader className="relative z-10">
-        <CardTitle className="text-xl text-primary flex items-center">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neon-green/20 to-neon-green/10 flex items-center justify-center mr-3">
-            <Upload className="h-4 w-4 text-neon-green" />
-          </div>
-          Jetzt bewerben
-        </CardTitle>
-        <CardDescription className="text-muted-foreground">
-          Bewerben Sie sich für die Position: {jobTitle}
-        </CardDescription>
-      </CardHeader>
+    <>
+      <ApplicationSuccessDialog
+        open={showSuccessDialog}
+        onOpenChange={setShowSuccessDialog}
+        jobTitle={jobTitle}
+      />
+      
+      <Card className="bg-gradient-glass backdrop-blur-xl border border-white/20 shadow-xl hover:shadow-2xl hover:shadow-electric-blue/10 transition-all duration-500 animate-fade-in">
+        <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
+        <CardHeader className="relative z-10">
+          <CardTitle className="text-xl text-primary flex items-center">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neon-green/20 to-neon-green/10 flex items-center justify-center mr-3">
+              <Upload className="h-4 w-4 text-neon-green" />
+            </div>
+            Jetzt bewerben
+          </CardTitle>
+          <CardDescription className="text-muted-foreground">
+            Bewerben Sie sich für die Position: {jobTitle}
+          </CardDescription>
+        </CardHeader>
       <CardContent className="relative z-10">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -449,6 +456,7 @@ const ApplicationForm = ({ jobId, jobTitle }: ApplicationFormProps) => {
         </Form>
       </CardContent>
     </Card>
+    </>
   );
 };
 
