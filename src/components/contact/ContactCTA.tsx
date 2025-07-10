@@ -24,7 +24,7 @@ const ContactCTA = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8 py-6 bg-gradient-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white border-0">
               <Phone className="h-5 w-5 mr-3" />
-              +49 (0) 30 123 456 789
+              0241 53307091
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 text-primary hover:bg-primary/5">
               Live Demo buchen

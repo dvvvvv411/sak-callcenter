@@ -133,7 +133,7 @@ const AGB = () => {
                 <p className="text-muted-foreground">
                   Bei Fragen zu diesen AGB wenden Sie sich bitte an:<br />
                   E-Mail: info@sak-callcenter.de<br />
-                  Telefon: +49 (0) 800 123 4567
+                  Telefon: 0241 53307091
                 </p>
               </CardContent>
             </Card>

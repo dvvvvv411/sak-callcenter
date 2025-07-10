@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/shared/Navigation";
 import Footer from "@/components/shared/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,7 +45,7 @@ const Impressum = () => {
                 
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-primary" />
-                  <p className="text-muted-foreground">+49 (0) 800 123 4567</p>
+                  <p className="text-muted-foreground">0241 53307091</p>
                 </div>
                 
                 <div className="flex items-center space-x-3">

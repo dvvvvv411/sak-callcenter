@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, Calendar, MessageSquare } from "lucide-react";
@@ -8,7 +9,7 @@ const ContactInfo = () => {
       icon: Phone,
       title: "Telefon",
       description: "Sprechen Sie direkt mit unseren Experten",
-      contact: "+49 (0) 30 123 456 789",
+      contact: "0241 53307091",
       action: "Jetzt anrufen",
       available: "Mo-Fr 8:00-18:00 Uhr"
     },
@@ -76,7 +77,7 @@ const ContactInfo = () => {
                           className="border-primary/30 text-primary hover:bg-primary hover:text-white"
                           onClick={() => {
                             if (method.title === "Telefon") {
-                              window.open("tel:+4930123456789", "_self");
+                              window.open("tel:024153307091", "_self");
                             } else if (method.title === "E-Mail") {
                               window.open("mailto:info@sak-callcenter.de", "_self");
                             }

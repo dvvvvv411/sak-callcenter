@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -33,7 +32,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>+49 (0) 800 123 4567</span>
+                <span>0241 53307091</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
